@@ -1,0 +1,6 @@
+#ifndef SHOWRADAR_LIBRARY_H
+#define SHOWRADAR_LIBRARY_H
+
+void hello();
+
+#endif //SHOWRADAR_LIBRARY_H
