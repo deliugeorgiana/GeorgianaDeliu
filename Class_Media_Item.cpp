@@ -13,7 +13,7 @@ private:
     float rating;
     std::vector<std::string> genres;
 
-public:
+public:z
     // Constructor fără parametrii
     MediaItem() : releaseYear(0), rating(0.0f) {}
 
