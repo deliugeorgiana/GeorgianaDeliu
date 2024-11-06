@@ -13,7 +13,7 @@ private:
     float rating;
     std::vector<std::string> genres;
 
-public:z
+public:
     // Constructor fără parametrii
     MediaItem() : releaseYear(0), rating(0.0f) {}
 
@@ -47,9 +47,11 @@ public:z
         return title + " (" + std::to_string(releaseYear) + ") - Rating: " + std::to_string(rating);
     }
 
-    // Operator<<
+    // Operator<< pentru MediaItem
     friend std::ostream& operator<<(std::ostream& os, const MediaItem& item) {
-        os << "Title: " << item.title << ", Year: " << item.releaseYear << ", Rating: " << item.rating;
+        os << "Title: " << item.title 
+           << ", Year: " << item.releaseYear 
+           << ", Rating: " << item.rating;
         return os;
     }
 };
