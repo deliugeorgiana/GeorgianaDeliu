@@ -39,7 +39,7 @@ public:
         return nullptr;
     }
 
-    [[nodiscard]] inline size_t FavoriteCount() const { return favorites.size(); }
+    [[nodiscard]] size_t FavoriteCount() const { return favorites.size(); }
 
     friend std::ostream& operator<<(std::ostream& os, const User& user) {
         os << "User: " << user.name << ", Language: " << user.preferredLanguage << ", Favorites: " << user.favorites.size();
