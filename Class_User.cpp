@@ -11,30 +11,25 @@ class User {
 private:
     std::string name;
     std::string preferredLanguage;
-    std::vector<std::shared_ptr<MediaItem>> favorites; // Use shared_ptr for favorites
+    std::vector<std::shared_ptr<MediaItem>> favorites;
 
 public:
-    // Constructor explicit de inițializare
     explicit User(std::string name, std::string preferredLanguage)
             : name(std::move(name)), preferredLanguage(std::move(preferredLanguage)) {}
 
-    // Constructor de copiere
     User(const User& other) = default;
 
-    // Operator= de copiere
     User& operator=(const User& other) {
         if (this != &other) {
             name = other.name;
             preferredLanguage = other.preferredLanguage;
-            favorites = other.favorites; // Use shared_ptr copy
+            favorites = other.favorites;
         }
         return *this;
     }
 
-    // Destructor
     ~User() = default;
 
-    // Funcții publice
     void AddToFavorites(const std::shared_ptr<MediaItem>& item) {
         favorites.push_back(item);
     }
@@ -44,9 +39,8 @@ public:
         return nullptr;
     }
 
-    [[maybe_unused]] [[nodiscard]] size_t FavoriteCount() const { return favorites.size(); }
+    [[nodiscard]] inline size_t FavoriteCount() const { return favorites.size(); }
 
-    // Operator<<
     friend std::ostream& operator<<(std::ostream& os, const User& user) {
         os << "User: " << user.name << ", Language: " << user.preferredLanguage << ", Favorites: " << user.favorites.size();
         return os;
