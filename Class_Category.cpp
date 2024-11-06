@@ -10,7 +10,7 @@
 class Categorie {
 private:
     std::string numeCategorie;
-    std::vector<std::shared_ptr<MediaItem>> listaFilme; // Use shared_ptr for media items
+    std::vector<std::shared_ptr<MediaItem>> listaFilme;
     int popularitate;
 
 public:
@@ -25,7 +25,7 @@ public:
     Categorie& operator=(const Categorie& other) {
         if (this != &other) {
             numeCategorie = other.numeCategorie;
-            listaFilme = other.listaFilme; // Use shared_ptr copy
+            listaFilme = other.listaFilme;
             popularitate = other.popularitate;
         }
         return *this;

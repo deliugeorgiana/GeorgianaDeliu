@@ -57,7 +57,7 @@ public:
 // Operator<< pentru shared_ptr<MediaItem>
 inline std::ostream& operator<<(std::ostream& os, const std::shared_ptr<MediaItem>& item) {
     if (item) {
-        os << *item; // Folosim operatorul << definit pentru MediaItem
+        os << *item;
     } else {
         os << "nullptr";
     }

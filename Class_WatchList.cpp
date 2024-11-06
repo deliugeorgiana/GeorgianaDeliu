@@ -11,7 +11,7 @@
 class Watchlist {
 private:
     std::string userId;
-    std::vector<std::shared_ptr<MediaItem>> items; // Folosim shared_ptr pentru a gestiona obiectele
+    std::vector<std::shared_ptr<MediaItem>> items;
 
 public:
     // Constructor

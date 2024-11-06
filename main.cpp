@@ -12,12 +12,12 @@ int main() {
     auto film2 = std::make_shared<MediaItem>("Titanic", 1997, 7.9f);
     auto film3 = std::make_shared<MediaItem>("The Matrix", 1999, 8.7f);
 
-    // afiseaza ce contine media
+    // Display MediaItem details
     std::cout << *film1 << std::endl;
     std::cout << *film2 << std::endl;
     std::cout << *film3 << std::endl;
 
-    // adauga genuri de filme
+    // Add genres to MediaItems
     film1->AddGenre("Sci-Fi");
     film1->AddGenre("Thriller");
     film2->AddGenre("Romance");
@@ -25,31 +25,35 @@ int main() {
     film3->AddGenre("Sci-Fi");
     film3->AddGenre("Action");
 
-    // face use+adauga la favorite
+    // Create User and add favorites
     User utilizator("Alice", "English");
     utilizator.AddToFavorites(film1);
     utilizator.AddToFavorites(film2);
 
-    // spune informatia despre user
+    // Display User information and favorites count
     std::cout << utilizator << std::endl;
-    std::cout << "Top favorite: " << (utilizator.GetTopFavorite() ? utilizator.GetTopFavorite()->GetInfo() : "N/A") << std::endl;
+    std::cout << "Top favorite: "
+              << (utilizator.GetTopFavorite() ? utilizator.GetTopFavorite()->GetInfo() : "N/A")
+              << std::endl;
+    std::cout << "Favorite count for user: " << utilizator.FavoriteCount() << std::endl;
 
-    // face un actor si adauga filme
+    // Create Actor and add films
     Actori actor("Leonardo DiCaprio");
     actor.AddFilm(film1);
     actor.AddFilm(film2);
     actor.AddFilm(film3);
 
-    // da informatia despre actor
+    // Display Actor information and film count
     std::cout << actor << std::endl;
     std::cout << "Main role: " << actor.GetMainRole() << std::endl;
+    std::cout << "Film count for actor: " << actor.FilmCount() << std::endl;
 
-    // creaza o categorie si adauga date media
+    // Create Category and add media items
     Categorie categorie("Sci-Fi", 120);
     categorie.AddMediaItem(film1);
     categorie.AddMediaItem(film3);
 
-    // afiseaza inf despre categorie
+    // Display Category information
     std::cout << categorie << std::endl;
     std::cout << "Is popular category? " << (categorie.IsPopular() ? "Yes" : "No") << std::endl;
     const auto topItem = categorie.GetTopItem();
@@ -57,17 +61,17 @@ int main() {
         std::cout << "Top item in category: " << topItem->GetInfo() << std::endl;
     }
 
-    // face un watchlist
+    // Create Watchlist and add media items
     Watchlist watchlist("Alice");
     watchlist.AddToWatchlist(film1);
     watchlist.AddToWatchlist(film2);
     watchlist.AddToWatchlist(film3);
 
-    // afiseaza watchlist ul
+    // Display initial Watchlist
     std::cout << "Initial Watchlist:" << std::endl;
     watchlist.DisplayWatchlist();
 
-    // scpate un film si afiseaza lista de dupa
+    // Remove a film and display updated Watchlist
     watchlist.RemoveFromWatchlist(film2);
     std::cout << "Watchlist after removing Titanic:" << std::endl;
     watchlist.DisplayWatchlist();

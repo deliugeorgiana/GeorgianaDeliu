@@ -10,7 +10,7 @@
 class Actori {
 private:
     std::string nume;
-    std::vector<std::shared_ptr<MediaItem>> filmografie; // Use shared_ptr for filmografie
+    std::vector<std::shared_ptr<MediaItem>> filmografie;
 
 public:
     // Constructor explicit
