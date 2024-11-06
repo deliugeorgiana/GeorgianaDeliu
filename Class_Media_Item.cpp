@@ -47,9 +47,11 @@ public:
         return title + " (" + std::to_string(releaseYear) + ") - Rating: " + std::to_string(rating);
     }
 
-    // Operator<<
+    // Operator<< pentru MediaItem
     friend std::ostream& operator<<(std::ostream& os, const MediaItem& item) {
-        os << "Title: " << item.title << ", Year: " << item.releaseYear << ", Rating: " << item.rating;
+        os << "Title: " << item.title 
+           << ", Year: " << item.releaseYear 
+           << ", Rating: " << item.rating;
         return os;
     }
 };
