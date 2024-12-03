@@ -20,10 +20,9 @@ public:
     [[nodiscard]] std::string GetType() const override;
 
     //clona
- std::shared_ptr<MediaItem> Clone() const override {
-    auto cloned = std::make_shared<Movie>(*this);
-    return cloned;
-}
+    [[nodiscard]] std::shared_ptr<MediaItem> Clone() const override;
+    };
+
 
 
 #endif
