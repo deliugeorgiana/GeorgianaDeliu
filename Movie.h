@@ -22,6 +22,7 @@ public:
     // scoate tipul
     [[nodiscard]] std::string GetType() const override;
 
+    };
 
 
 
