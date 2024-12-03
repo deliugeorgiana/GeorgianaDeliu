@@ -5,10 +5,6 @@
 
 // clasa derivata serial
 class Serial : public MediaItem {
-private:
-    std::string title;
-    std::string description;
-    float rating= 0.0f;
 public:
     // constructor serial
     Serial(std::string title, std::string description, float rating);
