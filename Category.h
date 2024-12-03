@@ -11,6 +11,7 @@ protected:
 
 public:
     explicit Category(std::string name);
+
     virtual ~Category() = default;
 
     // fcn virt pura

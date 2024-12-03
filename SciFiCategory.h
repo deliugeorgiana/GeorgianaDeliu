@@ -9,6 +9,8 @@ public:
     // constr explicit
     explicit SciFiCategory(const std::string& name);
 
+    ~SciFiCategory() override =default;
+
     // suprascriere
     [[nodiscard]] std::string GetCategoryName() const override;
 

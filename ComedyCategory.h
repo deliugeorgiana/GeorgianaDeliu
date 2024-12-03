@@ -9,6 +9,8 @@ public:
     //constr explicit
     explicit ComedyCategory(const std::string& name);
 
+    ~ComedyCategory() override =default;
+
     // suprascriere
     [[nodiscard]] std::string GetCategoryName() const override;
 
