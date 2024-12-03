@@ -9,7 +9,7 @@ class MediaItem {
 protected:
     std::string title;
     std::string description;
-    float rating;
+    float rating= 0.0f;
 
 public:
     // constructor explicit titlu

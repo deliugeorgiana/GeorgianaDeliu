@@ -5,13 +5,16 @@
 
 //clasa deriv
 class Movie : public MediaItem {
+private:
+    std::string description;
+    float rating = 0.0f;
 public:
     explicit Movie(const std::string& title) : MediaItem(title) {}
     //constructor
     Movie(std::string title, std::string description, float rating);
 
     //destructor
-    virtual ~Movie() = default;
+    ~Movie() override = default;
 
     // scoate ratingul
     [[nodiscard]] float GetRating() const override;

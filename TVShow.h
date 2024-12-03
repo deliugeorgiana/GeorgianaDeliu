@@ -5,11 +5,15 @@
 
 // clasa derivata emisiune tv
 class TVShow : public MediaItem {
+private:
+    std::string title;
+    std::string description;
+    float rating= 0.0f;
 public:
     TVShow(std::string title, std::string description, float rating);
 
     //destructor
-    virtual ~TVShow() = default;
+    ~TVShow() override = default;
 
     // fcn virt rating
     [[nodiscard]] float GetRating() const override;
