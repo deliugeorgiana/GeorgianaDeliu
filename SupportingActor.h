@@ -8,7 +8,7 @@
 class SupportingActor : public Actor {
 public:
     // accepta nume si l scrie
-    [[maybe_unused]] explicit SupportingActor(std::string name);
+    [[maybe_unused]] explicit SupportingActor(const std::string& name);
     
     ~SupportingActor() override =default;
 

@@ -1,6 +1,6 @@
 #include "SupportingActor.h"
 
-[[maybe_unused]] SupportingActor::SupportingActor(std::string name) : Actor(std::move(name)) {
+[[maybe_unused]] SupportingActor::SupportingActor(const std::string& name) : Actor(name){
     std::cout << "SupportingActor created with name: " << name << std::endl;
 }
 
