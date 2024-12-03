@@ -24,6 +24,8 @@ public:
 
     //clona
     [[nodiscard]] std::shared_ptr<MediaItem> Clone() const override;
-};
+    };
+
+
 
 #endif
