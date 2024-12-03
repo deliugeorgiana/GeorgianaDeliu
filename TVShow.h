@@ -8,6 +8,9 @@ class TVShow : public MediaItem {
 public:
     TVShow(std::string title, std::string description, float rating);
 
+    //destructor
+    virtual ~TVShow() = default;
+
     // fcn virt rating
     [[nodiscard]] float GetRating() const override;
 

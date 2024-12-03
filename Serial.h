@@ -9,6 +9,9 @@ public:
     // constructor serial
     Serial(std::string title, std::string description, float rating);
 
+    //destructor
+    virtual ~Serial() = default;
+
     // fcn virtuala rating
     [[nodiscard]] float GetRating() const override;
 

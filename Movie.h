@@ -10,6 +10,9 @@ public:
     //constructor
     Movie(std::string title, std::string description, float rating);
 
+    //destructor
+    virtual ~Movie() = default;
+
     // scoate ratingul
     [[nodiscard]] float GetRating() const override;
 
