@@ -15,6 +15,9 @@ public:
         }
     }
 
+    //destructor
+    ~PremiumUser() override = default;
+
     void DisplayProfile() const override;
 
     [[nodiscard]] std::shared_ptr<User> Clone() const override;

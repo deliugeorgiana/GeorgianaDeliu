@@ -8,10 +8,12 @@ public:
     explicit AdminUser(const std::string& name, const std::string& preferredLanguage)
             : User(name, preferredLanguage) {}
 
-    void DisplayProfile() const override;  // Declarație
-    [[nodiscard]] std::shared_ptr<User> Clone() const override; // Declarație
+    ~AdminUser() override = default;
 
-    static void ReportUser(const User& user); // Static, deoarece nu folosește membri
+    void DisplayProfile() const override;
+    [[nodiscard]] std::shared_ptr<User> Clone() const override;
+
+    static void ReportUser(const User& user);
 };
 
-#endif // ADMINUSER_H
+#endif

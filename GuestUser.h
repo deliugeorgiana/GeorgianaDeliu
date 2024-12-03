@@ -6,9 +6,12 @@
 class GuestUser : public User {
 public:
     explicit GuestUser(const std::string& name, const std::string& preferredLanguage)
-            : User(name, preferredLanguage) {}
+            : User(name, preferredLanguage) {};
 
+    //destructor
+            ~GuestUser() override = default;
     void DisplayProfile() const override;
+
     //fcn clone
     [[nodiscard]] std::shared_ptr<User> Clone() const override;
 };
