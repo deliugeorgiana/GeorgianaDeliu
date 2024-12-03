@@ -132,11 +132,11 @@ int main() {
         // dynamic_cast
         std::cout << "\nUsing dynamic_cast to find specific MediaItems:\n";
         for (const auto& item : mediaItems) {
-            if (auto movie = dynamic_cast<Movie*>(item.get())) {
+            if (auto const movie = dynamic_cast<Movie*>(item.get())) {
                 std::cout << "Found a movie: " << movie->GetTitle() << "\n";
-            } else if (auto tvShow = dynamic_cast<TVShow*>(item.get())) {
+            } else if (auto const tvShow = dynamic_cast<TVShow*>(item.get())) {
                 std::cout << "Found a TV Show: " << tvShow->GetTitle() << "\n";
-            } else if (auto serial = dynamic_cast<Serial*>(item.get())) {
+            } else if (auto const serial = dynamic_cast<Serial*>(item.get())) {
                 std::cout << "Found a Serial: " << serial->GetTitle() << "\n";
             }
         }
