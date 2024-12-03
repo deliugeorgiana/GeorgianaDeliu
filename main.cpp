@@ -222,11 +222,11 @@ std::cout<<"\nUSER\n";
         // dynamic_cast
         std::cout << "\nUsing dynamic_cast to identify user types:\n";
         for (const auto& user : users) {
-            if (auto admin = dynamic_cast<AdminUser*>(user.get())) {
+            if (auto const admin = dynamic_cast<AdminUser*>(user.get())) {
                 std::cout << "Found Admin: " << admin->GetName() << std::endl;
-            } else if (auto guest = dynamic_cast<GuestUser*>(user.get())) {
+            } else if (auto const guest = dynamic_cast<GuestUser*>(user.get())) {
                 std::cout << "Found Guest: " << guest->GetName() << std::endl;
-            } else if (auto premium = dynamic_cast<PremiumUser*>(user.get())) {
+            } else if (auto const premium = dynamic_cast<PremiumUser*>(user.get())) {
                 std::cout << "Found Premium: " << premium->GetName() << std::endl;
             }
         }
@@ -280,11 +280,11 @@ std::cout<<"CATEGORY";
         // dynamic_cast
         std::cout << "\nUsing dynamic_cast to identify category types:\n";
         for (const auto& category : categories) {
-            if (auto comedy = dynamic_cast<ComedyCategory*>(category.get())) {
+            if (auto const comedy = dynamic_cast<ComedyCategory*>(category.get())) {
                 std::cout << "Found Comedy category: " << comedy->GetCategoryName() << std::endl;
-            } else if (auto drama = dynamic_cast<DramaCategory*>(category.get())) {
+            } else if (auto const drama = dynamic_cast<DramaCategory*>(category.get())) {
                 std::cout << "Found Drama category: " << drama->GetCategoryName() << std::endl;
-            } else if (auto sciFi = dynamic_cast<SciFiCategory*>(category.get())) {
+            } else if (auto const sciFi = dynamic_cast<SciFiCategory*>(category.get())) {
                 std::cout << "Found Sci-Fi category: " << sciFi->GetCategoryName() << std::endl;
             }
         }
@@ -380,11 +380,11 @@ std::cout<<"ACTORI";
         // dyn_cast
         std::cout << "\nTesting Polymorphism with dynamic_cast:\n";
         for (const auto& actor : actors) {
-            if (auto lead = std::dynamic_pointer_cast<LeadActor>(actor)) {
+            if (auto const lead = std::dynamic_pointer_cast<LeadActor>(actor)) {
                 std::cout << "Lead Actor Detected: " << lead->GetName() << "\n";
-            } else if (auto support = std::dynamic_pointer_cast<SupportingActor>(actor)) {
+            } else if (auto const support = std::dynamic_pointer_cast<SupportingActor>(actor)) {
                 std::cout << "Supporting Actor Detected: " << support->GetName() << "\n";
-            } else if (auto guest = std::dynamic_pointer_cast<GuestActor>(actor)) {
+            } else if (auto const guest = std::dynamic_pointer_cast<GuestActor>(actor)) {
                 std::cout << "Guest Actor Detected: " << guest->GetName() << "\n";
             }
         }
