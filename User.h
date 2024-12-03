@@ -5,10 +5,10 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include "Class_Media_Item.cpp"
+#include "MediaItem.h"
 
 class User {
-private:
+protected:
     std::string name;
     std::string preferredLanguage;
     std::vector<std::shared_ptr<MediaItem>> favorites;
@@ -28,9 +28,9 @@ public:
         return *this;
     }
 
-    ~User() = default;
+    virtual ~User() = default;
 
-    void AddToFavorites(const std::shared_ptr<MediaItem>& item) {
+    [[maybe_unused]] void AddToFavorites(const std::shared_ptr<MediaItem>& item) {
         favorites.push_back(item);
     }
 
@@ -41,8 +41,20 @@ public:
 
     [[nodiscard]] size_t FavoriteCount() const { return favorites.size(); }
 
+    // getteri
+    [[nodiscard]] const std::string& GetName() const { return name; }
+    [[nodiscard]] const std::string& GetPreferredLanguage() const { return preferredLanguage; }
+
+    // fcn virt pura
+    virtual void DisplayProfile() const = 0;
+
+    // fcn virtuala clonare
+    [[nodiscard]] virtual std::shared_ptr<User> Clone() const = 0;
+
     friend std::ostream& operator<<(std::ostream& os, const User& user) {
-        os << "User: " << user.name << ", Language: " << user.preferredLanguage << ", Favorites: " << user.favorites.size();
+        os << "User: " << user.name
+           << ", Language: " << user.preferredLanguage
+           << ", Favorites: " << user.favorites.size();
         return os;
     }
 };

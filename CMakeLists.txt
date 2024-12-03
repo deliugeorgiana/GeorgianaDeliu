@@ -44,16 +44,46 @@ include(cmake/Options.cmake)
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
 add_executable(${PROJECT_NAME}
     main.cpp
-    Class_Media_Item.cpp
-    Class_Media_Item.h
-    Class_User.cpp
-    Class_User.h
-    Class_Actors.cpp
-    Class_Actors.h
-    Class_Category.cpp
-    Class_Category.h
-    Class_WatchList.cpp
-    Class_WatchList.h
+        MediaItem.cpp
+        MediaItem.h
+        User.cpp
+        User.h
+        Actor.cpp
+        Actor.h
+        Category.cpp
+        Category.h
+        Watchlist.cpp
+        Watchlist.h
+        Movie.cpp
+        Movie.h
+        Serial.cpp
+        Serial.h
+        TVShow.cpp
+        TVShow.h
+        DramaCategory.cpp
+        DramaCategory.h
+        SciFiCategory.cpp
+        SciFiCategory.h
+        ComedyCategory.cpp
+        ComedyCategory.h
+        AdminUser.cpp
+        AdminUser.h
+        PremiumUser.cpp
+        PremiumUser.h
+        GuestUser.cpp
+        GuestUser.h
+        LeadActor.cpp
+        LeadActor.h
+        SupportingActor.cpp
+        SupportingActor.h
+        GuestActor.cpp
+        GuestActor.h
+        FavoritesWatchlist.cpp
+        FavoritesWatchlist.h
+        RecommendationsWatchlist.cpp
+        RecommendationsWatchlist.h
+        RecentWatchlist.cpp
+        RecentWatchlist.h
 )
 
 include(cmake/CompilerFlags.cmake)
