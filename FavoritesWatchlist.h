@@ -8,6 +8,8 @@ public:
     // constr
     explicit FavoritesWatchlist([[maybe_unused]] std::string user);
 
+    ~FavoritesWatchlist() override =default;
+
     void DisplayWatchlist() const override;
 
     // clona

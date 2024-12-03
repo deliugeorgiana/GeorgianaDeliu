@@ -9,6 +9,7 @@ public:
 
     [[maybe_unused]] explicit GuestActor([[maybe_unused]] std::string name);
 
+    ~GuestActor() override =default;
     //rolul principal
     [[nodiscard]] std::string GetMainRole() const override;
 

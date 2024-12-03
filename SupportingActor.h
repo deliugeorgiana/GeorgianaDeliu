@@ -9,6 +9,8 @@ class SupportingActor : public Actor {
 public:
     // accepta nume si l scrie
     [[maybe_unused]] explicit SupportingActor(std::string name);
+    
+    ~SupportingActor() override =default;
 
     [[nodiscard]] std::string GetMainRole() const override;
 

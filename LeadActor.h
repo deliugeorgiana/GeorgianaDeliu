@@ -9,6 +9,8 @@ public:
     // constr
     [[maybe_unused]] explicit LeadActor([[maybe_unused]] std::string name);
 
+    ~LeadActor() override =default;
+
     [[nodiscard]] std::shared_ptr<Actor> Clone() const {
         return std::make_shared<LeadActor>(*this);
     }
