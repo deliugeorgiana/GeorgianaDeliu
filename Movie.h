@@ -22,9 +22,6 @@ public:
     // scoate tipul
     [[nodiscard]] std::string GetType() const override;
 
-    //clona
-    [[nodiscard]] std::shared_ptr<MediaItem> Clone() const override;
-    };
 
 
 
