@@ -7,15 +7,18 @@ class PremiumUser : public User {
 public:
     explicit PremiumUser(std::string name, std::string preferredLanguage)
             : User(std::move(name), std::move(preferredLanguage)) {
-        std::cout << "Creating PremiumUser with name: " << name
-                  << " and preferred language: " << preferredLanguage << std::endl;
+        std::string nameCopy = std::move(name);
+        std::string languageCopy = std::move(preferredLanguage);
 
-        if (preferredLanguage == "English") {
+        std::cout << "Creating PremiumUser with name: " << nameCopy
+                  << " and preferred language: " << languageCopy << std::endl;
+
+        if (languageCopy == "English") {
             std::cout << "PremiumUser prefers English." << std::endl;
         }
     }
 
-    //destructor
+    // Destructor
     ~PremiumUser() override = default;
 
     void DisplayProfile() const override;
