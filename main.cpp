@@ -146,7 +146,7 @@ int main() {
         auto clonedItem = mediaItems[0]->Clone();
         std::cout << "Cloned item: " << *clonedItem << "\n";
 
-        // ==================== STL Sorting ====================
+        // Sortare STL
         std::cout << "\nSorting MediaItems by rating:\n";
         std::sort(mediaItems.begin(), mediaItems.end(), [](const auto& a, const auto& b) {
             return a->GetRating() > b->GetRating();
