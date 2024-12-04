@@ -8,15 +8,14 @@ MediaItem::MediaItem(std::string title)
 MediaItem::MediaItem(std::string title, std::string description, float rating)
         : title(std::move(title)), description(std::move(description)), rating(rating) {}
 
-// getter titlu
-std::string MediaItem::GetTitle() const {
+const std::string& MediaItem::GetTitle() const {
     return title;
 }
 
-// fetter descriere
-std::string MediaItem::GetDescription() const {
+const std::string& MediaItem::GetDescription() const {
     return description;
 }
+
 
 // info MediaItemm
 std::string MediaItem::GetInfo() const {

@@ -6,7 +6,7 @@
 // clasa derivata emisiune tv
 class TVShow : public MediaItem {
 public:
-    TVShow(std::string title, std::string description, float rating);
+    TVShow([[maybe_unused]] std::string title, std::string description, float rating);
 
     //destructor
     ~TVShow() override = default;

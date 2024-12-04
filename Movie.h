@@ -8,7 +8,7 @@ class Movie : public MediaItem {
 public:
     explicit Movie(const std::string& title) : MediaItem(title) {}
     //constructor
-    Movie(std::string title, std::string description, float rating);
+    Movie([[maybe_unused]] std::string title, [[maybe_unused]] std::string description, float rating);
 
     //destructor
     ~Movie() override = default;

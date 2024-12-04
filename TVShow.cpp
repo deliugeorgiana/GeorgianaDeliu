@@ -1,9 +1,11 @@
 #include "TVShow.h"
 #include <iostream>
 
-TVShow::TVShow(std::string title, std::string description, float rating)
+TVShow::TVShow([[maybe_unused]] std::string title, std::string description, float rating)
         : MediaItem(std::move(title), std::move(description), rating) {
-        std::cout << "Creating TV Show: " << title << ", " << description << ", Rating: " << rating << std::endl;
+            std::string titleCopy = this->GetTitle();
+            std::string descriptionCopy = this->GetDescription();
+
 }
 
 float TVShow::GetRating() const {
@@ -14,7 +16,7 @@ std::string TVShow::GetType() const {
     return "TV Show";
 }
 
-// fcn clone
+// Virtual function clone
 std::shared_ptr<MediaItem> TVShow::Clone() const {
     return std::make_shared<TVShow>(*this);
 }

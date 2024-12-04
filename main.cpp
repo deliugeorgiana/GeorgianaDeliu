@@ -416,28 +416,28 @@ std::cout<<"ACTORI";
         std::shared_ptr<MediaItem> movie3 = std::make_shared<Movie>("Interstellar");
 
 
-        // actori prin mosteniri si fcn virt
-        std::shared_ptr<Actor> leadActorPtr = std::make_shared<LeadActor>("Robert Downey");
-        std::shared_ptr<Actor> supportingActorPtr = std::make_shared<SupportingActor>("Chris Evans");
-        std::shared_ptr<Actor> guestActorPtr = std::make_shared<GuestActor>("Scarlett Johansson");
+        // Actors by inheritance
+        std::make_shared<LeadActor>("Robert Downey");
+        std::make_shared<SupportingActor>("Chris Evans");
+        std::make_shared<GuestActor>("Scarlett Johansson");
 
-        // adaugam filme
+        // Adding movies
         leadActor->AddFilm(movie1);
         supportingActor->AddFilm(movie2);
         guestActor->AddFilm(movie3);
 
-        // verificam ap fcn
+        // testing function
         std::vector<std::shared_ptr<Actor>> actors = {leadActor, supportingActor, guestActor};
         for (const auto& actor : actors) {
             std::cout << *actor << ", Role: " << actor->GetRoleType() << ", Main Film: " << actor->GetMainRole() << '\n';
         }
 
-        // facem liste pt useri
+        // making lists for users
         std::unique_ptr<Watchlist> favorites = std::make_unique<FavoritesWatchlist>("User1");
         std::unique_ptr<Watchlist> recent = std::make_unique<RecentWatchlist>("User2");
         std::unique_ptr<Watchlist> recommendations = std::make_unique<RecommendationsWatchlist>("User3");
 
-        // bagam filme
+        // Adding to WatchList
         favorites->AddToWatchlist(movie1);
         favorites->AddToWatchlist(movie2);
 
@@ -446,7 +446,7 @@ std::cout<<"ACTORI";
         recommendations->AddToWatchlist(movie1);
         recommendations->AddToWatchlist(movie3);
 
-        // afisare
+        // Display
         std::cout << "\n--- Displaying Watchlists ---\n";
         favorites->DisplayWatchlist();
         recent->DisplayWatchlist();
@@ -460,7 +460,7 @@ std::cout<<"ACTORI";
             throw WatchlistException("Dynamic cast to FavoritesWatchlist failed.");
         }
 
-        // exceptii
+        // Exceptions
         std::cout << "\n--- Testing Exceptions ---\n";
         recommendations->RemoveFromWatchlist(movie2); // Acest film nu există în listă
     } catch (const WatchlistException& e) {
