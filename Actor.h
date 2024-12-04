@@ -29,7 +29,8 @@ public:
     // sa afle tipul de rol
     [[nodiscard]] virtual std::string GetRoleType() const = 0;
 
-    [[nodiscard]] const std::string& GetName() const;
+    // numele actorului
+    [[nodiscard]] std::string GetName() const;
 
     friend std::ostream& operator<<(std::ostream& os, const Actor& actor);
 };

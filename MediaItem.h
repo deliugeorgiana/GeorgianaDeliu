@@ -37,10 +37,11 @@ public:
 // functie virt pura pt copierea/clonarea unui obiect
     [[nodiscard]] virtual std::shared_ptr<MediaItem> Clone() const = 0;
 
-    [[nodiscard]] const std::string& GetTitle() const;
+//getter titlu
+    [[nodiscard]] std::string GetTitle() const;
 
-    [[nodiscard]] const std::string& GetDescription() const;
-
+// getter descriere
+    [[nodiscard]] std::string GetDescription() const;
 
 // suprascrierea operatorului, incarcarea unui obiect
     friend std::ostream &operator<<(std::ostream &os, const MediaItem &media);
