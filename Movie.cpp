@@ -1,9 +1,9 @@
 #include "Movie.h"
 
 
-Movie::Movie(std::string title, std::string description, float rating)
+Movie::Movie([[maybe_unused]] std::string title, [[maybe_unused]] std::string description, float rating)
         : MediaItem(std::move(title), std::move(description), rating) {
-    // Creează copii temporare pentru afișare
+    // Temporary copies
     const std::string titleCopy = this->GetTitle();
     const std::string descriptionCopy = this->GetDescription();
 
@@ -11,17 +11,17 @@ Movie::Movie(std::string title, std::string description, float rating)
 }
 
 
-// dcn virtuala pt a scoate rating
+// Virtual function for rating
 float Movie::GetRating() const {
     return rating;
 }
 
-// functie virtuala pt tip
+// Virtual function for type
 std::string Movie::GetType() const {
     return "Movie";
 }
 
-// clona
+// Clone
 std::shared_ptr<MediaItem> Movie::Clone() const {
     return std::make_shared<Movie>(*this);
 }
