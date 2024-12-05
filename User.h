@@ -14,11 +14,18 @@ protected:
     std::vector<std::shared_ptr<MediaItem>> favorites;
 
 public:
+    // Constructor cu validare
     explicit User(std::string name, std::string preferredLanguage)
-            : name(std::move(name)), preferredLanguage(std::move(preferredLanguage)) {}
+            : name(std::move(name)), preferredLanguage(std::move(preferredLanguage)) {
+        if (this->name.empty() || this->preferredLanguage.empty()) {
+            throw std::invalid_argument("Name and preferred language cannot be empty.");
+        }
+    }
 
+    // Constructor de copiere
     User(const User& other) = default;
 
+    // Operator de atribuire
     User& operator=(const User& other) {
         if (this != &other) {
             name = other.name;
@@ -28,29 +35,34 @@ public:
         return *this;
     }
 
+    // Destructor virtual
     virtual ~User() = default;
 
-    [[maybe_unused]] void AddToFavorites(const std::shared_ptr<MediaItem>& item) {
+    // Adaugă un element în lista de favorite
+    void AddToFavorites(const std::shared_ptr<MediaItem>& item) {
         favorites.push_back(item);
     }
 
+    // Obține primul element favorit
     [[nodiscard]] std::shared_ptr<MediaItem> GetTopFavorite() const {
         if (!favorites.empty()) return favorites.front();
         return nullptr;
     }
 
+    // Obține numărul de elemente favorite
     [[nodiscard]] size_t FavoriteCount() const { return favorites.size(); }
 
-    // getteri
-    [[nodiscard]] const std::string& GetName() const { return name; }
-    [[nodiscard]] const std::string& GetPreferredLanguage() const { return preferredLanguage; }
+    // Getteri virtuali
+    [[nodiscard]] virtual const std::string& GetName() const { return name; }
+    [[nodiscard]] virtual const std::string& GetPreferredLanguage() const { return preferredLanguage; }
 
-    // fcn virt pura
+    // Funcție virtuală pură pentru afișare profil
     virtual void DisplayProfile() const = 0;
 
-    // fcn virtuala clonare
+    // Funcție virtuală pură pentru clonare
     [[nodiscard]] virtual std::shared_ptr<User> Clone() const = 0;
 
+    // Suprascriere operator << pentru afișare
     friend std::ostream& operator<<(std::ostream& os, const User& user) {
         os << "User: " << user.name
            << ", Language: " << user.preferredLanguage
@@ -59,4 +71,4 @@ public:
     }
 };
 
-#endif
+#endif // USER_H

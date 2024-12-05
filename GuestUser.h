@@ -5,17 +5,20 @@
 
 class GuestUser : public User {
 public:
+    // Constructor cu validare prin moștenire
     explicit GuestUser(const std::string& name, const std::string& preferredLanguage)
-            : User(name, preferredLanguage) {};
+            : User(name, preferredLanguage) {}
 
-    //destructor
+    // Destructor virtual
     ~GuestUser() override = default;
 
     void DisplayProfile() const override;
 
-    [[nodiscard]] const std::string& GetName() const { return name; }
-    //fcn clone
     [[nodiscard]] std::shared_ptr<User> Clone() const override;
+
+    // Getter pentru nume (suprascriere)
+    [[nodiscard]] const std::string& GetName() const override { return name; }
+
 };
 
-#endif // GUESTUSER_H
+#endif
