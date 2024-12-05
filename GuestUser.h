@@ -9,9 +9,11 @@ public:
             : User(name, preferredLanguage) {};
 
     //destructor
-            ~GuestUser() override = default;
+    ~GuestUser() override = default;
+
     void DisplayProfile() const override;
 
+    [[nodiscard]] const std::string& GetName() const { return name; }
     //fcn clone
     [[nodiscard]] std::shared_ptr<User> Clone() const override;
 };

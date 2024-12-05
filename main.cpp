@@ -25,6 +25,8 @@
 #include "RecentWatchlist.h"
 #include "RecommendationsWatchlist.h"
 
+//Exceptions
+
 class MediaException : public std::runtime_error {
 public:
     explicit MediaException(const std::string& message)
@@ -181,7 +183,7 @@ int main() {
 
 
     //////////////////////////USER
-std::cout<<"\nUSER\n";
+    std::cout << "\nUSER\n";
     try {
         // smart pointers
         std::vector<std::shared_ptr<User>> users;
@@ -213,8 +215,15 @@ std::cout<<"\nUSER\n";
             std::cout << "Number of favorites: " << user->FavoriteCount() << "\n";
         }
 
+        // Raportarea unui utilizator
         std::cout << "\nAdmin reporting a user:\n";
-        AdminUser::ReportUser(*guestUser);  // Apelăm funcția statică
+        AdminUser::ReportUser(*guestUser);
+
+
+        // Crearea unui alt admin pentru a demonstra utilizarea lui adminCount
+        auto anotherAdmin = std::make_shared<AdminUser>("Dave", "German");
+        users.push_back(anotherAdmin);
+
 
         // recomandare continut premium user
         std::cout << "\nPremium user recommending content:\n";
@@ -231,7 +240,6 @@ std::cout<<"\nUSER\n";
                 std::cout << "Found Premium: " << premium->GetName() << std::endl;
             }
         }
-
 
         // throw si catch a unei exceptii
         std::cout << "\nTesting exception handling:\n";
@@ -483,7 +491,5 @@ std::cout<<"ACTORI";
 
     return 0;
 }
-
-
 
 
