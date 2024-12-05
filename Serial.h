@@ -3,22 +3,22 @@
 
 #include "MediaItem.h"
 
-//Derived class
+// clasa derivata serial
 class Serial : public MediaItem {
 public:
-    // Constructor serial
+    // constructor serial
     Serial([[maybe_unused]] std::string title, [[maybe_unused]] std::string description, float rating);
 
-    //Destructor
+    //destructor
     ~Serial() override = default;
 
-    // Virtual rating function
+    // fcn virtuala rating
     [[nodiscard]] float GetRating() const override;
 
-    // Virtual type function
+    // fcn virtuala tip
     [[nodiscard]] std::string GetType() const override;
 
-    // Serial clone
+    // clona obiect serial
     [[nodiscard]] std::shared_ptr<MediaItem> Clone() const override;
 };
 

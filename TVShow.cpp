@@ -3,8 +3,7 @@
 
 TVShow::TVShow([[maybe_unused]] std::string title, std::string description, float rating)
         : MediaItem(std::move(title), std::move(description), rating) {
-            std::string titleCopy = this->GetTitle();
-            std::string descriptionCopy = this->GetDescription();
+        std::cout << "Creating TVShow: " << title << ", " << description<< ", Rating: " << rating << std::endl;
 
 }
 
