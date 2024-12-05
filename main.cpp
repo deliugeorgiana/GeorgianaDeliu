@@ -417,9 +417,10 @@ std::cout<<"ACTORI";
 
 
         // Actors by inheritance
-        std::make_shared<LeadActor>("Robert Downey");
-        std::make_shared<SupportingActor>("Chris Evans");
-        std::make_shared<GuestActor>("Scarlett Johansson");
+        std::shared_ptr<Actor> leadActorPtr = std::make_shared<LeadActor>("Robert Downey");
+        std::shared_ptr<Actor> supportingActorPtr = std::make_shared<SupportingActor>("Chris Evans");
+        std::shared_ptr<Actor> guestActorPtr = std::make_shared<GuestActor>("Scarlett Johansson");
+
 
         // Adding movies
         leadActor->AddFilm(movie1);
