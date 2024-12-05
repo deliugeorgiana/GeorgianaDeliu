@@ -30,7 +30,7 @@ public:
     [[nodiscard]] virtual std::string GetRoleType() const = 0;
 
     // numele actorului
-    [[nodiscard]] std::string GetName() const;
+    [[nodiscard]] const std::string& GetName() const;
 
     friend std::ostream& operator<<(std::ostream& os, const Actor& actor);
 };

@@ -3,7 +3,7 @@
 // constr
 Actor::Actor(std::string name) : name(std::move(name)) {}
 
-// adauga film la filmografie
+// Adds a movie
 void Actor::AddFilm(const std::shared_ptr<MediaItem>& item) {
     filmography.push_back(item);
 }
@@ -19,18 +19,17 @@ void Actor::DisplayFilms() const {
 }
 
 
-// afla rolul principal
+// Main role
 [[nodiscard]] std::string Actor::GetMainRole() const {
     return !filmography.empty() ? filmography.front()->GetTitle() : "N/A";
 }
 
-// primeste tipul rolului
+//Role type
 [[nodiscard]] std::string Actor::GetRoleType() const {
     return "Actor";  // This is a generic "Actor" role, can be overridden by derived classes
 }
 
-// primeste numele actorului
-[[nodiscard]] std::string Actor::GetName() const {
+const std::string& Actor::GetName() const {
     return name;
 }
 
