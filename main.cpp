@@ -413,7 +413,7 @@ std::cout<<"ACTORI";
     /////////////////////////////////WATCHLIST
     std::cout<<"\nWATCLIST\n";
     try {
-        // facem obiecte
+        // making objects
         std::shared_ptr<MediaItem> movie1 = std::make_shared<Movie>("Inception");
         std::shared_ptr<MediaItem> movie2 = std::make_shared<Movie>("The Matrix");
         std::shared_ptr<MediaItem> movie3 = std::make_shared<Movie>("Interstellar");
