@@ -223,14 +223,15 @@ std::cout<<"\nUSER\n";
         // dynamic_cast
         std::cout << "\nUsing dynamic_cast to identify user types:\n";
         for (const auto& user : users) {
-            if (auto const admin = dynamic_cast<AdminUser*>(user.get())) {
+            if (auto const* admin = dynamic_cast<const AdminUser*>(user.get())) {
                 std::cout << "Found Admin: " << admin->GetName() << std::endl;
-            } else if (auto const guest = dynamic_cast<GuestUser*>(user.get())) {
+            } else if (auto const* guest = dynamic_cast<const GuestUser*>(user.get())) {
                 std::cout << "Found Guest: " << guest->GetName() << std::endl;
-            } else if (auto const premium = dynamic_cast<PremiumUser*>(user.get())) {
+            } else if (auto const* premium = dynamic_cast<const PremiumUser*>(user.get())) {
                 std::cout << "Found Premium: " << premium->GetName() << std::endl;
             }
         }
+
 
         // throw si catch a unei exceptii
         std::cout << "\nTesting exception handling:\n";
