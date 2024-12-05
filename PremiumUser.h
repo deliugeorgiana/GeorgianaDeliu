@@ -5,8 +5,8 @@
 
 class PremiumUser : public User {
 public:
-    explicit PremiumUser(const std::string& name, std::string preferredLanguage)
-            : User(name, preferredLanguage) { // moves the copies to the base class
+    explicit PremiumUser(const std::string& name, const std::string& preferredLanguage)
+            : User(name, preferredLanguage) { // transfering through constant reference
         std::cout << "Creating PremiumUser with name: " << name
                   << " and preferred language: " << preferredLanguage << std::endl;
 
