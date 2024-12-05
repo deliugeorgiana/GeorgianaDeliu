@@ -425,6 +425,12 @@ std::cout<<"ACTORI";
         std::shared_ptr<Actor> guestActorPtr = std::make_shared<GuestActor>("Scarlett Johansson");
 
 
+        std::cout << "Lead Actor: " << leadActorPtr->GetName() << "\n";
+        std::cout << "Supporting Actor: " << supportingActorPtr->GetName() << "\n";
+        std::cout << "Guest Actor: " << guestActorPtr->GetName() << "\n";
+
+
+
         // Adding movies
         leadActor->AddFilm(movie1);
         supportingActor->AddFilm(movie2);
