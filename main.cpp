@@ -282,14 +282,15 @@ std::cout<<"CATEGORY";
         // dynamic_cast
         std::cout << "\nUsing dynamic_cast to identify category types:\n";
         for (const auto& category : categories) {
-            if (auto const comedy = dynamic_cast<ComedyCategory*>(category.get())) {
+            if (auto const* comedy = dynamic_cast<const ComedyCategory*>(category.get())) {
                 std::cout << "Found Comedy category: " << comedy->GetCategoryName() << std::endl;
-            } else if (auto const drama = dynamic_cast<DramaCategory*>(category.get())) {
+            } else if (auto const* drama = dynamic_cast<const DramaCategory*>(category.get())) {
                 std::cout << "Found Drama category: " << drama->GetCategoryName() << std::endl;
-            } else if (auto const sciFi = dynamic_cast<SciFiCategory*>(category.get())) {
+            } else if (auto const* sciFi = dynamic_cast<const SciFiCategory*>(category.get())) {
                 std::cout << "Found Sci-Fi category: " << sciFi->GetCategoryName() << std::endl;
             }
         }
+
 
         // testare exceptii
         std::cout << "\nTesting exception handling:\n";
@@ -456,12 +457,13 @@ std::cout<<"ACTORI";
         recommendations->DisplayWatchlist();
 
         // dyn_cast
-        auto specificWatchlist = dynamic_cast<FavoritesWatchlist*>(favorites.get());
+        auto const* specificWatchlist = dynamic_cast<const FavoritesWatchlist*>(favorites.get());
         if (specificWatchlist) {
             std::cout << "Dynamic cast to FavoritesWatchlist successful.\n";
         } else {
             throw WatchlistException("Dynamic cast to FavoritesWatchlist failed.");
         }
+
 
         // Exceptions
         std::cout << "\n--- Testing Exceptions ---\n";
