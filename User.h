@@ -34,7 +34,7 @@ public:
         favorites.push_back(item);
     }
 
-    [[maybe_unused]] [[nodiscard]] std::shared_ptr<MediaItem> GetTopFavorite() const {
+    [[nodiscard]] std::shared_ptr<MediaItem> GetTopFavorite() const {
         if (!favorites.empty()) return favorites.front();
         return nullptr;
     }
