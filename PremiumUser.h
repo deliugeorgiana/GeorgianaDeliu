@@ -5,15 +5,12 @@
 
 class PremiumUser : public User {
 public:
-    explicit PremiumUser(std::string name, std::string preferredLanguage)
-            : User(std::move(name), std::move(preferredLanguage)) {
-        std::string nameCopy = std::move(name);
-        std::string languageCopy = std::move(preferredLanguage);
+    explicit PremiumUser(const std::string& name, std::string preferredLanguage)
+            : User(name, preferredLanguage) { // moves the copies to the base class
+        std::cout << "Creating PremiumUser with name: " << name
+                  << " and preferred language: " << preferredLanguage << std::endl;
 
-        std::cout << "Creating PremiumUser with name: " << nameCopy
-                  << " and preferred language: " << languageCopy << std::endl;
-
-        if (languageCopy == "English") {
+        if (preferredLanguage == "English") {
             std::cout << "PremiumUser prefers English." << std::endl;
         }
     }
