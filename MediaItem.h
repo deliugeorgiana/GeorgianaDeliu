@@ -9,44 +9,42 @@ class MediaItem {
 protected:
     std::string title;
     std::string description;
-    float rating= 0.0f;
+    float rating = 0.0f;
 
 public:
-    // constructor explicit titlu
+    // Explicit constructor title
     explicit MediaItem(std::string title);
 
-// constructor titlu, descriere, rating
+    // Constructor for title, description, ratinf
     MediaItem(std::string title, std::string description, float rating);
 
-// destructor virtual, permite moștenirea
+    // Virtual destructor
     virtual ~MediaItem() = default;
 
     void display() const {
         std::cout << "Title: " << title << ", Genre: " << description << ", Rating: " << rating << std::endl;
     }
 
-//functie virtuala pura pt rating
+    // Virtual function fot rating
     [[nodiscard]] virtual float GetRating() const = 0;
 
-// functie virtuala pura pt tipul de media
+    // Virtual function for type
     [[nodiscard]] virtual std::string GetType() const = 0;
 
-// functe virtuala pura pt a scoate info despre obiect
+    // Virtual function for info
     [[nodiscard]] virtual std::string GetInfo() const;
 
-// functie virt pura pt copierea/clonarea unui obiect
+    // Virtul fcn clone
     [[nodiscard]] virtual std::shared_ptr<MediaItem> Clone() const = 0;
 
-//getter titlu
-    [[nodiscard]] std::string GetTitle() const;
+    // getter title
+    [[nodiscard]] const std::string& GetTitle() const;
 
-// getter descriere
-    [[nodiscard]] std::string GetDescription() const;
+    // getter description
+    [[nodiscard]] const std::string& GetDescription() const;
 
-// suprascrierea operatorului, incarcarea unui obiect
+    // suprascrierea operatorului, incarcarea unui obiect
     friend std::ostream &operator<<(std::ostream &os, const MediaItem &media);
 };
 
 #endif
-
-
