@@ -1,11 +1,17 @@
 #include "MediaItem.h"
 
+int MediaItem::itemCount = 0;
+std::vector<std::string> MediaItem::genres;
 
 MediaItem::MediaItem(std::string title)
-        : title(std::move(title)), rating(0.0f) {}
+        : title(std::move(title)), rating(0.0f) {
+    ++itemCount;
+}
 
 MediaItem::MediaItem(std::string title, std::string description, float rating)
-        : title(std::move(title)), description(std::move(description)), rating(rating) {}
+        : title(std::move(title)), description(std::move(description)), rating(rating) {
+    ++itemCount;
+}
 
 // getter title
 const std::string& MediaItem::GetTitle() const {
@@ -27,4 +33,17 @@ std::ostream& operator<<(std::ostream& os, const MediaItem& media) {
     os << "Title: " << media.GetTitle()
        << "\nDescription: " << media.GetDescription();
     return os;
+}
+
+// Static function implementations
+int MediaItem::GetItemCount() {
+    return itemCount;
+}
+
+void MediaItem::AddGenre(const std::string& genre) {
+    genres.push_back(genre);
+}
+
+const std::vector<std::string>& MediaItem::GetGenres() {
+    return genres;
 }

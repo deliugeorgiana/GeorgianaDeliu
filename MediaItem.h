@@ -4,12 +4,16 @@
 #include <string>
 #include <iostream>
 #include <memory>
+#include <vector>
 
 class MediaItem {
 protected:
     std::string title;
     std::string description;
     float rating = 0.0f;
+
+    static int itemCount;
+    static std::vector<std::string> genres;
 
 public:
     // Explicit constructor title
@@ -45,6 +49,10 @@ public:
 
     // suprascrierea operatorului, incarcarea unui obiect
     friend std::ostream &operator<<(std::ostream &os, const MediaItem &media);
+
+    static int GetItemCount();
+    static void AddGenre(const std::string& genre);
+    static const std::vector<std::string>& GetGenres();
 };
 
 #endif

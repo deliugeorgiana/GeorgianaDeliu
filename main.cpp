@@ -181,6 +181,35 @@ int main() {
         std::cerr << "An error occurred: " << e.what() << "\n";
     }
 
+    MediaItem::AddGenre("Action");
+    MediaItem::AddGenre("Drama");
+    MediaItem::AddGenre("Sci-Fi");
+
+    // Afișăm lista de genuri
+    std::cout << "Available genres:\n";
+    for (const auto& genre : MediaItem::GetGenres()) {
+        std::cout << "- " << genre << '\n';
+    }
+
+    // Creăm obiecte de tip Movie
+    auto item1 = std::make_shared<Movie>("Inception", "Sci-Fi/Thriller", 9.0f);
+    auto item2 = std::make_shared<Movie>("The Godfather", "Crime/Drama", 9.5f);
+
+    // Afișăm informațiile despre obiecte
+    std::cout << "\nMovies:\n";
+    std::cout << item1->GetInfo() << std::endl;
+    std::cout << item2->GetInfo() << std::endl;
+
+    // Afișăm numărul total de obiecte MediaItem
+    std::cout << "\nTotal Media Items: " << MediaItem::GetItemCount() << std::endl;
+
+    // Ștergem un obiect pentru a verifica decrementarea contorului
+    item1.reset();
+
+    std::cout << "Total Media Items after deleting one: " << MediaItem::GetItemCount() << std::endl;
+
+
+
 
     //////////////////////////USER
     std::cout << "\nUSER\n";
