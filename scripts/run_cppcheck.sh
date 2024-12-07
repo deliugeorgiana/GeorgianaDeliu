@@ -10,4 +10,3 @@ cppcheck --enable=all \
     --suppress=unmatchedSuppression \
     --suppress=useStlAlgorithm \
     --error-exitcode=1
-    --check-level=exhaustive
