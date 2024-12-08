@@ -145,9 +145,14 @@ int main() {
 
 
         // functii Clone
-        std::cout << "\nCloning media items:\n";
-        auto clonedItem = mediaItems[0]->Clone();
-        std::cout << "Cloned item: " << *clonedItem << "\n";
+        auto originalMovie = std::make_shared<Movie>("Inception", "A mind-bending thriller", 8.8);
+
+        // Clonare
+        auto clonedMovie = originalMovie->Clone();
+
+        // Afișare informații
+        std::cout << "Original Movie: " << originalMovie->GetTitle() << ", Rating: " << originalMovie->GetRating() << "\n";
+        std::cout << "Cloned Movie: " << clonedMovie->GetTitle() << ", Rating: " << clonedMovie->GetRating() << "\n";
 
         // Sortare STL
         std::cout << "\nSorting MediaItems by rating:\n";
