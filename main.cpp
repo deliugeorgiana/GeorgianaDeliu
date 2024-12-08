@@ -181,6 +181,7 @@ int main() {
         std::cerr << "An error occurred: " << e.what() << "\n";
     }
 
+    //static
     MediaItem::AddGenre("Action");
     MediaItem::AddGenre("Drama");
     MediaItem::AddGenre("Sci-Fi");
