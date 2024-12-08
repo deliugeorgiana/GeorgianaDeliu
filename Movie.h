@@ -8,7 +8,7 @@ class Movie : public MediaItem {
 public:
     explicit Movie(const std::string& title) : MediaItem(title) {}
     //constructor
-    Movie([[maybe_unused]] [[maybe_unused]] [[maybe_unused]] std::string title, [[maybe_unused]] [[maybe_unused]] std::string description, float rating);
+    Movie([[maybe_unused]] [[maybe_unused]] [[maybe_unused]] [[maybe_unused]] std::string title, [[maybe_unused]] [[maybe_unused]] [[maybe_unused]] std::string description, float rating);
 
     //destructor
     ~Movie() override = default;
@@ -20,7 +20,7 @@ public:
     [[nodiscard]] std::string GetType() const override;
 
     //clona
-    [[nodiscard]] std::shared_ptr<MediaItem> Clone() const override ;
+    [[nodiscard]] std::shared_ptr<MediaItem> Clone() const override  ;
     };
 
 
