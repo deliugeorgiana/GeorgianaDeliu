@@ -19,7 +19,3 @@ std::string Movie::GetType() const {
     return "Movie";
 }
 
-// Clone
-std::shared_ptr<MediaItem> Movie::Clone() const {
-    return std::make_shared<Movie>(*this);
-}

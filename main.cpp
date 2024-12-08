@@ -154,6 +154,7 @@ int main() {
         std::cout << "Original Movie: " << originalMovie->GetTitle() << ", Rating: " << originalMovie->GetRating() << "\n";
         std::cout << "Cloned Movie: " << clonedMovie->GetTitle() << ", Rating: " << clonedMovie->GetRating() << "\n";
 
+
         // Sortare STL
         std::cout << "\nSorting MediaItems by rating:\n";
         std::sort(mediaItems.begin(), mediaItems.end(), [](const auto& a, const auto& b) {
