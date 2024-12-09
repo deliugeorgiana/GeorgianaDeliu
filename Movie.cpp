@@ -1,3 +1,4 @@
+
 #include "Movie.h"
 
 
@@ -18,4 +19,3 @@ float Movie::GetRating() const {
 std::string Movie::GetType() const {
     return "Movie";
 }
-

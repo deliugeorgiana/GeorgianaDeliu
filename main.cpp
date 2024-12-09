@@ -143,27 +143,7 @@ int main() {
             }
         }
 
-
-        // functii Clone
-        auto originalMovie = std::make_shared<Movie>("Inception", "A mind-bending thriller", 8.8);
-
-        // Clonare
-        auto clonedMovie = originalMovie->Clone();
-
-        // Afișare informații
-        std::cout << "Original Movie: " << originalMovie->GetTitle() << ", Rating: " << originalMovie->GetRating() << "\n";
-        std::cout << "Cloned Movie: " << clonedMovie->GetTitle() << ", Rating: " << clonedMovie->GetRating() << "\n";
-
-
-        // Sortare STL
-        std::cout << "\nSorting MediaItems by rating:\n";
-        std::sort(mediaItems.begin(), mediaItems.end(), [](const auto& a, const auto& b) {
-            return a->GetRating() > b->GetRating();
-        });
-
-        for (const auto& item : mediaItems) {
-            std::cout << item->GetTitle() << " - Rating: " << item->GetRating() << "\n";
-        }
+        
 
         // item specific
         std::cout << "\nSearching for 'Friends' in MediaItems:\n";
