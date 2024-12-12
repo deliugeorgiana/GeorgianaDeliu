@@ -18,7 +18,6 @@ std::string TVShow::GetType() const {
     return "TV Show";
 }
 
-// Virtual function clone
 std::shared_ptr<MediaItem> TVShow::Clone() const {
     return std::make_shared<TVShow>(*this);
 }

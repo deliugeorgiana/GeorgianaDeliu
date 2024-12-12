@@ -13,7 +13,7 @@
 #include "GuestUser.h"
 #include "PremiumUser.h"
 #include "Category.h"
-#include "ComedyCategory.h"
+#include "ComedyCategory.h" 
 #include "DramaCategory.h"
 #include "SciFiCategory.h"
 #include "Actor.h"
@@ -143,7 +143,13 @@ int main() {
             }
         }
 
-        
+        //clone
+        std::cout << "\nTesting Clone functionality:\n";
+        auto clonedMovie = inception->Clone();
+        std::cout << "Cloned Movie: " << *clonedMovie << std::endl;
+
+        auto clonedSerial = friends->Clone();
+        std::cout << "Cloned Serial: " << *clonedSerial << std::endl;
 
         // item specific
         std::cout << "\nSearching for 'Friends' in MediaItems:\n";
@@ -171,6 +177,7 @@ int main() {
     MediaItem::AddGenre("Action");
     MediaItem::AddGenre("Drama");
     MediaItem::AddGenre("Sci-Fi");
+    MediaItem::AddGenre("Thriller");
 
     // Afișăm lista de genuri
     std::cout << "Available genres:\n";

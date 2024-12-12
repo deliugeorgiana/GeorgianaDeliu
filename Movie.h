@@ -24,8 +24,7 @@ public:
 
     //clona
     [[nodiscard]] std::shared_ptr<MediaItem> Clone() const override {
-        // Creează o copie a acestui obiect de tip Movie
-        return std::make_shared<Movie>(*this);
+            return std::make_shared<Movie>(*this);
     }
 
 

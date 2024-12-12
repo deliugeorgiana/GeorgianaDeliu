@@ -18,7 +18,7 @@ public:
     // fcn virtuala tip
     [[nodiscard]] std::string GetType() const override;
 
-    // clona obiect serial
+    //clone
     [[nodiscard]] std::shared_ptr<MediaItem> Clone() const override;
 };
 

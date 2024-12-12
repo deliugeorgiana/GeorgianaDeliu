@@ -38,9 +38,6 @@ public:
     // Virtual function for info
     [[nodiscard]] virtual std::string GetInfo() const;
 
-    // Virtul fcn clone
-    [[nodiscard]] virtual std::shared_ptr<MediaItem> Clone() const = 0;
-
     // getter title
     [[nodiscard]] const std::string& GetTitle() const;
 
@@ -49,6 +46,8 @@ public:
 
     // suprascrierea operatorului, incarcarea unui obiect
     friend std::ostream &operator<<(std::ostream &os, const MediaItem &media);
+
+    [[nodiscard]] virtual std::shared_ptr<MediaItem> Clone() const = 0;
 
     static int GetItemCount();
     static void AddGenre(const std::string& genre);

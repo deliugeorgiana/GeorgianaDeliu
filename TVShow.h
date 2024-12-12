@@ -6,7 +6,8 @@
 // clasa derivata emisiune tv
 class TVShow : public MediaItem {
 public:
-    TVShow([[maybe_unused]] [[maybe_unused]] [[maybe_unused]] std::string title, [[maybe_unused]] std::string description, float rating);
+    TVShow([[maybe_unused]] [[maybe_unused]] [[maybe_unused]] std::string title,
+           [[maybe_unused]] std::string description, float rating);
 
     //destructor
     ~TVShow() override = default;
@@ -17,8 +18,7 @@ public:
     // fcn virtuala tip
     [[nodiscard]] std::string GetType() const override;
 
-    // clona TvShow
+    // clone
     [[nodiscard]] std::shared_ptr<MediaItem> Clone() const override;
 };
-
 #endif
