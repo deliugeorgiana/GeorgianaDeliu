@@ -14,7 +14,3 @@ void RecentWatchlist::DisplayWatchlist() const {
     }
 }
 
-// clona
-std::unique_ptr<Watchlist> RecentWatchlist::Clone() const {
-    return std::make_unique<RecentWatchlist>(*this);
-}

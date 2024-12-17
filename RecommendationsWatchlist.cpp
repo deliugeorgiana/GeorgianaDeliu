@@ -14,7 +14,3 @@ void RecommendationsWatchlist::DisplayWatchlist() const {
     }
 }
 
-// clona
-std::unique_ptr<Watchlist> RecommendationsWatchlist::Clone() const {
-    return std::make_unique<RecommendationsWatchlist>(*this);
-}

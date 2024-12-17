@@ -10,8 +10,6 @@ public:
     ~RecommendationsWatchlist() override =default;
 
     void DisplayWatchlist() const override;
-
-    [[nodiscard]] std::unique_ptr<Watchlist> Clone() const override;
 };
 
 #endif

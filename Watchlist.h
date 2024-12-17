@@ -29,8 +29,7 @@ public:
     // afiseaza watchlist ul
     [[maybe_unused]] virtual void DisplayWatchlist() const;
 
-    // clona
-    [[nodiscard]] virtual std::unique_ptr<Watchlist> Clone() const = 0;
+
 };
 
 #endif

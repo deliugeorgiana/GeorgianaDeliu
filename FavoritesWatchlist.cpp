@@ -12,7 +12,3 @@ void FavoritesWatchlist::DisplayWatchlist() const {
     }
 }
 
-// clona
-std::unique_ptr<Watchlist> FavoritesWatchlist::Clone() const {
-    return std::make_unique<FavoritesWatchlist>(*this);
-}

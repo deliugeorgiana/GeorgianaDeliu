@@ -12,8 +12,6 @@ public:
 
     void DisplayWatchlist() const override;
 
-    // clona
-    [[nodiscard]] std::unique_ptr<Watchlist> Clone() const override;
 };
 
 #endif
