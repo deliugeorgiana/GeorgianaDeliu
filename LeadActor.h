@@ -11,10 +11,6 @@ public:
 
     ~LeadActor() override =default;
 
-    [[nodiscard]] std::shared_ptr<Actor> Clone() const {
-        return std::make_shared<LeadActor>(*this);
-    }
-
     [[nodiscard]] std::string GetMainRole() const override;
 
     [[nodiscard]] std::string GetRoleType() const override;

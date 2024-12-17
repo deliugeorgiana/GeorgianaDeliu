@@ -393,10 +393,6 @@ std::cout<<"ACTORI";
                       << ", Main Role: " << actor->GetMainRole() << "\n";
         }
 
-        // test clonare
-        std::cout << "\nTesting Clone Function:\n";
-        auto clonedLeadActor = leadActor->Clone();
-        std::cout << "Cloned Lead Actor: " << *clonedLeadActor << "\n";
 
         // testeaza filme asociate cu actori
         std::cout << "\nFilms Associated with Actors:\n";

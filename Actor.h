@@ -20,7 +20,7 @@ public:
     // af filmele din lista actorului
     void DisplayFilms() const;
 
-    // adauga un film
+    // adds a movie
     [[maybe_unused]] [[maybe_unused]] void AddFilm(const std::shared_ptr<MediaItem>& item);
 
     //metoda virtuala pt rolul primcipal
