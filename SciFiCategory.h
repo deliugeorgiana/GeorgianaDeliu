@@ -14,8 +14,6 @@ public:
     // suprascriere
     [[nodiscard]] std::string GetCategoryName() const override;
 
-    // clonare
-    [[nodiscard]] std::shared_ptr<Category> Clone() const override;
 };
 
 #endif

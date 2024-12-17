@@ -8,7 +8,3 @@ ComedyCategory::ComedyCategory(const std::string& name)
     return "Comedy: " + name;
 }
 
-//clonare
-[[nodiscard]] std::shared_ptr<Category> ComedyCategory::Clone() const {
-    return std::make_shared<ComedyCategory>(*this);
-}

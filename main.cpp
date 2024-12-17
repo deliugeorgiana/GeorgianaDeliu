@@ -297,13 +297,6 @@ std::cout<<"CATEGORY";
             std::cout << *category << std::endl;
         }
 
-        // clonare
-        std::cout << "\nCloning categories:\n";
-        std::vector<std::shared_ptr<Category>> clonedCategories;
-        for (const auto& category : categories) {
-            clonedCategories.push_back(category->Clone());
-            std::cout << *clonedCategories.back() << std::endl;
-        }
 
         // dynamic_cast
         std::cout << "\nUsing dynamic_cast to identify category types:\n";
@@ -334,7 +327,6 @@ std::cout<<"CATEGORY";
         try {
             auto invalidCategoryClone = std::make_shared<DramaCategory>("");
             categories.push_back(invalidCategoryClone);
-            std::cout << "Cloned invalid category: " << *invalidCategoryClone->Clone() << std::endl;
         } catch (const CategoryException& e) {
             std::cerr << "Caught exception while cloning: " << e.what() << std::endl;
         }

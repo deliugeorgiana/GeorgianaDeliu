@@ -11,9 +11,6 @@ public:
     // suprascriere
     [[nodiscard]] std::string GetCategoryName() const override;
 
-    // clone
-    [[nodiscard]] std::shared_ptr<Category> Clone() const override;
-
     // destructor virt
     ~DramaCategory() override = default;
 };

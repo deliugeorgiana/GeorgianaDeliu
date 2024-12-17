@@ -8,8 +8,3 @@ SciFiCategory::SciFiCategory(const std::string& name)
 [[nodiscard]] std::string SciFiCategory::GetCategoryName() const {
     return "Sci-Fi: " + name;
 }
-
-// implementare clone
-[[nodiscard]] std::shared_ptr<Category> SciFiCategory::Clone() const {
-    return std::make_shared<SciFiCategory>(*this);
-}
