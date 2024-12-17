@@ -12,7 +12,6 @@ public:
 
     void DisplayProfile() const override;
 
-    [[nodiscard]] std::shared_ptr<User> Clone() const override;
 };
 
 #endif // GUESTUSER_H

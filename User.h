@@ -59,8 +59,7 @@ public:
     // Funcție virtuală pură pentru afișare profil
     virtual void DisplayProfile() const = 0;
 
-    // Funcție virtuală pură pentru clonare
-    [[nodiscard]] virtual std::shared_ptr<User> Clone() const = 0;
+
 
     // Suprascriere operator << pentru afișare
     friend std::ostream& operator<<(std::ostream& os, const User& user) {

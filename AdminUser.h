@@ -11,7 +11,6 @@ public:
     ~AdminUser() override = default;
 
     void DisplayProfile() const override;
-    [[nodiscard]] std::shared_ptr<User> Clone() const override;
 
     static void ReportUser(const User& user);
 };

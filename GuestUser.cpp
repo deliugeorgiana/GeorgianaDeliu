@@ -6,6 +6,3 @@ void GuestUser::DisplayProfile() const {
               << ", Language: " << GetPreferredLanguage() << std::endl;
 }
 
-std::shared_ptr<User> GuestUser::Clone() const {
-    return std::make_shared<GuestUser>(*this);
-}

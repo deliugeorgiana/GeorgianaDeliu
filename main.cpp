@@ -275,11 +275,6 @@ int main() {
             std::cerr << "Caught exception: " << e.what() << std::endl;
         }
 
-        // testare clone
-        std::cout << "\nTesting Clone functionality:\n";
-        auto clonedUser = adminUser->Clone();
-        std::cout << "Cloned user: " << *clonedUser << std::endl;
-
     } catch (const std::exception& e) {
         std::cerr << "An error occurred: " << e.what() << "\n";
     }
