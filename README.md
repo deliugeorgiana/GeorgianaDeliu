@@ -1,7 +1,7 @@
 # ShowRadar
 
 ## Descriere proiect
-ShowRadar este o aplicație de recomandare a filmelor, serialelor și emisiunilor TV, care ajută utilizatorii să descopere titluri noi pe baza preferințelor de limbă, categorii și actori favoriți. Aplicația permite adăugarea de recenzii, organizarea titlurilor în categorii și filtrarea colecției de media pentru o experiență personalizată și intuitivă.
+ShowRadar este o aplicație de recomandare a filmelor, serialelor și emisiunilor TV, care ajută utilizatorii să descopere titluri noi pe baza preferințelor de limbă, categorii și actori favoriți. Aplicația permite adăugarea de recenzii, organizarea titlurilor în categorii și filtrarea colecției de media pentru o experiență personalizată și intuitivă. De asemenea, utilizatorii pot crea liste de vizionare personalizate și pot primi recomandări bazate pe istoricul vizionărilor și evaluările anterioare.
 
 ## Milestone #0
 
@@ -61,3 +61,4 @@ ShowRadar este o aplicație de recomandare a filmelor, serialelor și emisiunilo
 
 ## Resurse
 - adăugați trimiteri către resursele externe care v-au ajutat sau pe care le-ați folosit
+

@@ -320,7 +320,7 @@ std::cout<<"CATEGORY";
             throw CategoryException("Invalid category name: empty string.");
         } catch (const CategoryException& e) {
             std::cerr << "Caught exception: " << e.what() << std::endl;
-        }
+        }   
 
         // testate clone
         std::cout << "\nTesting Clone with invalid category:\n";
