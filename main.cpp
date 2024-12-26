@@ -74,12 +74,12 @@ public:
 
 int main() {
     //////////MEDIAITEM
-    std::cout<<"\nMEDIAITEM\n";
+    std::cout << "\nMEDIAITEM\n";
 
     try {
         // situatie cu exceptie
         throw MediaException("Exceptie manuala im main");
-    } catch (const MediaException& e) {
+    } catch (const MediaException &e) {
         std::cerr << "Caught MediaException: " << e.what() << std::endl;
     }
 
@@ -100,13 +100,13 @@ int main() {
 
         // functii virtuala
         std::cout << "\nDisplaying Media Info using overloaded << operator:\n";
-        for (const auto& item : mediaItems) {
+        for (const auto &item: mediaItems) {
             std::cout << "Type: " << item->GetType() << "\n" << *item << "\n";
         }
 
         // utilizare getinfo
         std::cout << "\nDisplaying Media Information using GetInfo:\n";
-        for (const auto& item : mediaItems) {
+        for (const auto &item: mediaItems) {
             std::cout << item->GetInfo() << "\n";
         }
 
@@ -118,7 +118,7 @@ int main() {
         mediaItems.push_back(theOffice);
 
         std::cout << "\nAdded new Media Items:\n";
-        for (const auto& item : mediaItems) {
+        for (const auto &item: mediaItems) {
             std::cout << item->GetTitle() << " - " << item->GetType() << "\n";
         }
 
@@ -127,18 +127,18 @@ int main() {
         try {
             auto invalidMedia = std::make_shared<Movie>("Invalid Movie", "No description", -5.0f);
             mediaItems.push_back(invalidMedia);
-        } catch (const MediaException& e) {
+        } catch (const MediaException &e) {
             std::cerr << e.what() << "\n";
         }
 
         // dynamic_cast
         std::cout << "\nUsing dynamic_cast to find specific MediaItems:\n";
-        for (const auto& item : mediaItems) {
-            if (auto const* movie = dynamic_cast<const Movie*>(item.get())) { // Pointer const
+        for (const auto &item: mediaItems) {
+            if (auto const *movie = dynamic_cast<const Movie *>(item.get())) { // Pointer const
                 std::cout << "Found a movie: " << movie->GetTitle() << "\n";
-            } else if (auto const* tvShow = dynamic_cast<const TVShow*>(item.get())) { // Pointer const
+            } else if (auto const *tvShow = dynamic_cast<const TVShow *>(item.get())) { // Pointer const
                 std::cout << "Found a TV Show: " << tvShow->GetTitle() << "\n";
-            } else if (auto const* serial = dynamic_cast<const Serial*>(item.get())) { // Pointer const
+            } else if (auto const *serial = dynamic_cast<const Serial *>(item.get())) { // Pointer const
                 std::cout << "Found a Serial: " << serial->GetTitle() << "\n";
             }
         }
@@ -153,7 +153,7 @@ int main() {
 
         // item specific
         std::cout << "\nSearching for 'Friends' in MediaItems:\n";
-        auto it = std::find_if(mediaItems.begin(), mediaItems.end(), [](const auto& item) {
+        auto it = std::find_if(mediaItems.begin(), mediaItems.end(), [](const auto &item) {
             return item->GetTitle() == "Friends";
         });
 
@@ -165,11 +165,11 @@ int main() {
 
         // afisare
         std::cout << "\nDisplaying all MediaItems after all operations:\n";
-        for (const auto& item : mediaItems) {
+        for (const auto &item: mediaItems) {
             std::cout << item->GetInfo() << "\n";
         }
 
-    } catch (const std::exception& e) {
+    } catch (const std::exception &e) {
         std::cerr << "An error occurred: " << e.what() << "\n";
     }
 
@@ -181,7 +181,7 @@ int main() {
 
     // Afișăm lista de genuri
     std::cout << "Available genres:\n";
-    for (const auto& genre : MediaItem::GetGenres()) {
+    for (const auto &genre: MediaItem::GetGenres()) {
         std::cout << "- " << genre << '\n';
     }
 
@@ -233,7 +233,7 @@ int main() {
 
         // afisare profil utilizatori cu fcn virt
         std::cout << "\nDisplaying all profiles:\n";
-        for (const auto& user : users) {
+        for (const auto &user: users) {
             user->DisplayProfile();
             std::cout << "Number of favorites: " << user->FavoriteCount() << "\n";
         }
@@ -254,12 +254,12 @@ int main() {
 
         // dynamic_cast
         std::cout << "\nUsing dynamic_cast to identify user types:\n";
-        for (const auto& user : users) {
-            if (auto const* admin = dynamic_cast<const AdminUser*>(user.get())) {
+        for (const auto &user: users) {
+            if (auto const *admin = dynamic_cast<const AdminUser *>(user.get())) {
                 std::cout << "Found Admin: " << admin->GetName() << std::endl;
-            } else if (auto const* guest = dynamic_cast<const GuestUser*>(user.get())) {
+            } else if (auto const *guest = dynamic_cast<const GuestUser *>(user.get())) {
                 std::cout << "Found Guest: " << guest->GetName() << std::endl;
-            } else if (auto const* premium = dynamic_cast<const PremiumUser*>(user.get())) {
+            } else if (auto const *premium = dynamic_cast<const PremiumUser *>(user.get())) {
                 std::cout << "Found Premium: " << premium->GetName() << std::endl;
             }
         }
@@ -271,16 +271,16 @@ int main() {
             auto invalidUser = std::make_shared<PremiumUser>("InvalidUser", "");
             users.push_back(invalidUser);  // il bagam in lista
             throw UserException("Invalid user created with no preferred language.");
-        } catch (const UserException& e) {
+        } catch (const UserException &e) {
             std::cerr << "Caught exception: " << e.what() << std::endl;
         }
 
-    } catch (const std::exception& e) {
+    } catch (const std::exception &e) {
         std::cerr << "An error occurred: " << e.what() << "\n";
     }
 
 ////////////////////////CATEGORY
-    std::cout<<"CATEGORY";
+    std::cout << "CATEGORY";
 
     try {
         // colectie categorii cu pointeri smart
@@ -293,19 +293,19 @@ int main() {
 
         // folosire fcn virtuale
         std::cout << "\nDisplaying all categories:\n";
-        for (const auto& category : categories) {
+        for (const auto &category: categories) {
             std::cout << *category << std::endl;
         }
 
 
         // dynamic_cast
         std::cout << "\nUsing dynamic_cast to identify category types:\n";
-        for (const auto& category : categories) {
-            if (auto const* comedy = dynamic_cast<const ComedyCategory*>(category.get())) {
+        for (const auto &category: categories) {
+            if (auto const *comedy = dynamic_cast<const ComedyCategory *>(category.get())) {
                 std::cout << "Found Comedy category: " << comedy->GetCategoryName() << std::endl;
-            } else if (auto const* drama = dynamic_cast<const DramaCategory*>(category.get())) {
+            } else if (auto const *drama = dynamic_cast<const DramaCategory *>(category.get())) {
                 std::cout << "Found Drama category: " << drama->GetCategoryName() << std::endl;
-            } else if (auto const* sciFi = dynamic_cast<const SciFiCategory*>(category.get())) {
+            } else if (auto const *sciFi = dynamic_cast<const SciFiCategory *>(category.get())) {
                 std::cout << "Found Sci-Fi category: " << sciFi->GetCategoryName() << std::endl;
             }
         }
@@ -318,7 +318,7 @@ int main() {
             auto invalidCategory = std::make_shared<ComedyCategory>("");
             categories.push_back(invalidCategory);  // Adăugăm în vector
             throw CategoryException("Invalid category name: empty string.");
-        } catch (const CategoryException& e) {
+        } catch (const CategoryException &e) {
             std::cerr << "Caught exception: " << e.what() << std::endl;
         }
 
@@ -327,16 +327,16 @@ int main() {
         try {
             auto invalidCategoryClone = std::make_shared<DramaCategory>("");
             categories.push_back(invalidCategoryClone);
-        } catch (const CategoryException& e) {
+        } catch (const CategoryException &e) {
             std::cerr << "Caught exception while cloning: " << e.what() << std::endl;
         }
 
-    } catch (const std::exception& e) {
+    } catch (const std::exception &e) {
         std::cerr << "An error occurred: " << e.what() << "\n";
     }
 
 /////////////////////////ACTORI
-    std::cout<<"ACTORI";
+    std::cout << "ACTORI";
     try {
         // pointeru ot filme
         std::shared_ptr<MediaItem> movie1 = std::make_shared<Movie>("Interstellar");
@@ -375,7 +375,7 @@ int main() {
 
         // apeluri virtuale demonstrate
         std::cout << "\nDemonstration of Virtual Function Calls:\n";
-        for (const auto& actor : actors) {
+        for (const auto &actor: actors) {
             std::cout << "Role Type: " << actor->GetRoleType()
                       << ", Main Role: " << actor->GetMainRole() << "\n";
         }
@@ -383,20 +383,20 @@ int main() {
 
         // testeaza filme asociate cu actori
         std::cout << "\nFilms Associated with Actors:\n";
-        for (const auto& actor : actors) {
+        for (const auto &actor: actors) {
             std::cout << "Actor: " << actor->GetName() << ", Films: ";
             actor->DisplayFilms();
         }
 
         // << pentru af actorilor
         std::cout << "\nUsing operator<< to display actors:\n";
-        for (const auto& actor : actors) {
+        for (const auto &actor: actors) {
             std::cout << *actor << "\n";
         }
 
         // dyn_cast
         std::cout << "\nTesting Polymorphism with dynamic_cast:\n";
-        for (const auto& actor : actors) {
+        for (const auto &actor: actors) {
             if (auto const lead = std::dynamic_pointer_cast<LeadActor>(actor)) {
                 std::cout << "Lead Actor Detected: " << lead->GetName() << "\n";
             } else if (auto const support = std::dynamic_pointer_cast<SupportingActor>(actor)) {
@@ -406,9 +406,9 @@ int main() {
             }
         }
 
-    } catch (const ActorException& e) {
+    } catch (const ActorException &e) {
         std::cerr << "ActorException caught: " << e.what() << std::endl;
-    } catch (const std::exception& e) {
+    } catch (const std::exception &e) {
         std::cerr << "General exception caught: " << e.what() << std::endl;
     }
     auto leadActor = std::make_shared<LeadActor>("Robert Downey Jr.");
@@ -425,7 +425,7 @@ int main() {
 
 
     /////////////////////////////////WATCHLIST
-    std::cout<<"\nWATCLIST\n";
+    std::cout << "\nWATCLIST\n";
     try {
         // making objects
         std::shared_ptr<MediaItem> movie1 = std::make_shared<Movie>("Inception");
@@ -452,8 +452,9 @@ int main() {
 
         // testing function
         std::vector<std::shared_ptr<Actor>> actors = {leadActor, supportingActor, guestActor};
-        for (const auto& actor : actors) {
-            std::cout << *actor << ", Role: " << actor->GetRoleType() << ", Main Film: " << actor->GetMainRole() << '\n';
+        for (const auto &actor: actors) {
+            std::cout << *actor << ", Role: " << actor->GetRoleType() << ", Main Film: " << actor->GetMainRole()
+                      << '\n';
         }
 
         // making lists for users
@@ -477,7 +478,7 @@ int main() {
         recommendations->DisplayWatchlist();
 
         // dyn_cast
-        auto const* specificWatchlist = dynamic_cast<const FavoritesWatchlist*>(favorites.get());
+        auto const *specificWatchlist = dynamic_cast<const FavoritesWatchlist *>(favorites.get());
         if (specificWatchlist) {
             std::cout << "Dynamic cast to FavoritesWatchlist successful.\n";
         } else {
@@ -488,14 +489,12 @@ int main() {
         // Exceptions
         std::cout << "\n--- Testing Exceptions ---\n";
         recommendations->RemoveFromWatchlist(movie2); // Acest film nu există în listă
-    } catch (const WatchlistException& e) {
+    } catch (const WatchlistException &e) {
         std::cerr << "WatchlistException caught: " << e.what() << '\n';
-    } catch (const std::exception& e) {
+    } catch (const std::exception &e) {
         std::cerr << "Standard exception caught: " << e.what() << '\n';
     }
 
 
     return 0;
 }
-
-
