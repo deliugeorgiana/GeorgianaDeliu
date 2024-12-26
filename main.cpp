@@ -24,7 +24,7 @@
 #include "FavoritesWatchlist.h"
 #include "RecentWatchlist.h"
 #include "RecommendationsWatchlist.h"
-
+#include "tastatura.txt"
 //Exceptions
 
 class MediaException : public std::runtime_error {
@@ -493,8 +493,9 @@ std::cout<<"ACTORI";
     } catch (const std::exception& e) {
         std::cerr << "Standard exception caught: " << e.what() << '\n';
     }
-
-
+int test;
+    std::cin>>test;
+    std::cout<<test;
     return 0;
 }
 
