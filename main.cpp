@@ -497,9 +497,7 @@ std::cout<<"ACTORI";
     } catch (const std::exception& e) {
         std::cerr << "Standard exception caught: " << e.what() << '\n';
     }
-int lala;
-    std::cin>>lala;
-    std::cout<<lala;
+
     return 0;
 }
 
