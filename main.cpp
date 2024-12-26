@@ -13,7 +13,7 @@
 #include "GuestUser.h"
 #include "PremiumUser.h"
 #include "Category.h"
-#include "ComedyCategory.h" 
+#include "ComedyCategory.h"
 #include "DramaCategory.h"
 #include "SciFiCategory.h"
 #include "Actor.h"
@@ -280,7 +280,7 @@ int main() {
     }
 
 ////////////////////////CATEGORY
-std::cout<<"CATEGORY";
+    std::cout<<"CATEGORY";
 
     try {
         // colectie categorii cu pointeri smart
@@ -320,7 +320,7 @@ std::cout<<"CATEGORY";
             throw CategoryException("Invalid category name: empty string.");
         } catch (const CategoryException& e) {
             std::cerr << "Caught exception: " << e.what() << std::endl;
-        }   
+        }
 
         // testate clone
         std::cout << "\nTesting Clone with invalid category:\n";
@@ -336,14 +336,14 @@ std::cout<<"CATEGORY";
     }
 
 /////////////////////////ACTORI
-std::cout<<"ACTORI";
+    std::cout<<"ACTORI";
     try {
         // pointeru ot filme
         std::shared_ptr<MediaItem> movie1 = std::make_shared<Movie>("Interstellar");
         std::shared_ptr<MediaItem> movie2 = std::make_shared<Movie>("The Dark Knight");
         std::shared_ptr<MediaItem> movie3 = std::make_shared<Movie>("Inception");
 
-       //af ce a gasit
+        //af ce a gasit
         movie1->display();
         movie2->display();
         movie3->display();
