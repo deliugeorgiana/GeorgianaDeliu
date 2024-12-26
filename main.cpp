@@ -27,14 +27,10 @@
 
 //Exceptions
 
-class MediaException : public std::exception {
-private:
-    std::string message;
+class MediaException : public std::runtime_error {
 public:
-    explicit MediaException(std::string  msg) : message(std::move(msg)) {}
-    [[nodiscard]] const char* what() const noexcept override {
-        return message.c_str();
-    }
+    explicit MediaException(const std::string& message)
+            : std::runtime_error("MediaException: " + message) {}
 };
 
 class UserException : public std::runtime_error {
