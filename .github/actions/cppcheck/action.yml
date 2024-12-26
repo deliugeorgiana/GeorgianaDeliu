@@ -8,8 +8,8 @@ runs:
       uses: actions/cache/restore@v4
       id: cache-cppcheck
       with:
-        path: cppcheck
         key: cppcheck-${{ env.CPPCHECK_VER }}
+        path: ''
 
     - name: Build cppcheck
       shell: bash
