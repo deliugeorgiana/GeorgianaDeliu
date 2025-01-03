@@ -488,7 +488,7 @@ int main() {
 
         // Exceptions
         std::cout << "\n--- Testing Exceptions ---\n";
-        recommendations->RemoveFromWatchlist(movie2); // Acest film nu există în listă
+        recommendations->RemoveFromWatchlist(movie2);
     } catch (const WatchlistException &e) {
         std::cerr << "WatchlistException caught: " << e.what() << '\n';
     } catch (const std::exception &e) {
