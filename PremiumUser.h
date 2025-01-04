@@ -15,7 +15,7 @@ public:
         }
     }
 
-    // Destructor
+
     ~PremiumUser() override = default;
 
     void DisplayProfile() const override;
