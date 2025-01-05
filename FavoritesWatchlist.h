@@ -2,22 +2,16 @@
 #define FAVORITES_WATCHLIST_H
 
 #include "Watchlist.h"
-#include <iostream>
 
-// Watchlist specializat pentru favorite
-template <typename T>
-class FavoritesWatchlist : public Watchlist<T> {
+class [[maybe_unused]] FavoritesWatchlist : public Watchlist {
 public:
-    explicit FavoritesWatchlist(std::string user) : Watchlist<T>(std::move(user)) {}
+    // constr
+    explicit FavoritesWatchlist([[maybe_unused]] std::string user);
 
-    void DisplayWatchlist() const override {
-        std::cout << "Favorites Watchlist for " << this->userId << ":\n";
-        for (const auto& item : this->items) {
-            if (item.GetRating() > 8.0) {
-                std::cout << item << std::endl;
-            }
-        }
-    }
+    ~FavoritesWatchlist() override =default;
+
+    void DisplayWatchlist() const override;
+
 };
 
 #endif

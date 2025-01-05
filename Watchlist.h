@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <functional>
 
-// Clasa șablon Watchlist
+// Clasa șablon
 template <typename T>
 class Watchlist {
 protected:
