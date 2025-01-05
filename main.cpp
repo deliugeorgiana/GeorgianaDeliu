@@ -423,75 +423,71 @@ int main() {
     std::cout << "Supporting Actor: " << *supportingActor << std::endl;
     std::cout << "Guest Actor: " << *guestActor << std::endl;
 
-
-    /////////////////////////////////WATCHLIST
-    std::cout << "\nWATCLIST\n";
+/////////////////////WATCHLIST
+    std::cout << "\n--- WATCHLIST ---\n";
     try {
-        // making objects
+        // Creating movie objects
         std::shared_ptr<MediaItem> movie1 = std::make_shared<Movie>("Inception");
         std::shared_ptr<MediaItem> movie2 = std::make_shared<Movie>("The Matrix");
         std::shared_ptr<MediaItem> movie3 = std::make_shared<Movie>("Interstellar");
 
-
-        // Actors by inheritance
+        // Creating actor objects
         std::shared_ptr<Actor> leadActorPtr = std::make_shared<LeadActor>("Robert Downey");
         std::shared_ptr<Actor> supportingActorPtr = std::make_shared<SupportingActor>("Chris Evans");
         std::shared_ptr<Actor> guestActorPtr = std::make_shared<GuestActor>("Scarlett Johansson");
-
 
         std::cout << "Lead Actor: " << leadActorPtr->GetName() << "\n";
         std::cout << "Supporting Actor: " << supportingActorPtr->GetName() << "\n";
         std::cout << "Guest Actor: " << guestActorPtr->GetName() << "\n";
 
+        // Adding films to actors
+        leadActorPtr->AddFilm(movie1);
+        supportingActorPtr->AddFilm(movie2);
+        guestActorPtr->AddFilm(movie3);
 
-
-        // Adding movies
-        leadActor->AddFilm(movie1);
-        supportingActor->AddFilm(movie2);
-        guestActor->AddFilm(movie3);
-
-        // testing function
-        std::vector<std::shared_ptr<Actor>> actors = {leadActor, supportingActor, guestActor};
-        for (const auto &actor: actors) {
-            std::cout << *actor << ", Role: " << actor->GetRoleType() << ", Main Film: " << actor->GetMainRole()
-                      << '\n';
+        // Display actors with their films
+        std::vector<std::shared_ptr<Actor>> actors = {leadActorPtr, supportingActorPtr, guestActorPtr};
+        for (const auto& actor : actors) {
+            std::cout << *actor << ", Role: " << actor->GetRoleType() << ", Main Film: " << actor->GetMainRole() << '\n';
         }
 
-        // making lists for users
+        // Creating Watchlist objects for users
         std::unique_ptr<Watchlist> favorites = std::make_unique<FavoritesWatchlist>("User1");
         std::unique_ptr<Watchlist> recent = std::make_unique<RecentWatchlist>("User2");
         std::unique_ptr<Watchlist> recommendations = std::make_unique<RecommendationsWatchlist>("User3");
 
-        // Adding to WatchList
+        // Adding movies to Watchlists
         favorites->AddToWatchlist(movie1);
         favorites->AddToWatchlist(movie2);
-
         recent->AddToWatchlist(movie3);
-
         recommendations->AddToWatchlist(movie1);
         recommendations->AddToWatchlist(movie3);
 
-        // Display
+        // Display Watchlists
         std::cout << "\n--- Displaying Watchlists ---\n";
         favorites->DisplayWatchlist();
         recent->DisplayWatchlist();
         recommendations->DisplayWatchlist();
 
-        // dyn_cast
-        auto const *specificWatchlist = dynamic_cast<const FavoritesWatchlist *>(favorites.get());
+        // Dynamic cast to FavoritesWatchlist and error handling
+        const auto* specificWatchlist = dynamic_cast<const FavoritesWatchlist*>(favorites.get());
         if (specificWatchlist) {
             std::cout << "Dynamic cast to FavoritesWatchlist successful.\n";
         } else {
             throw WatchlistException("Dynamic cast to FavoritesWatchlist failed.");
         }
 
-
-        // Exceptions
+        // Testing removing a non-existent movie from Watchlist
         std::cout << "\n--- Testing Exceptions ---\n";
-        recommendations->RemoveFromWatchlist(movie2);
-    } catch (const WatchlistException &e) {
+        try {
+            recommendations->RemoveFromWatchlist(movie2);  // Movie2 isn't in this watchlist
+        } catch (const WatchlistException& e) {
+            std::cerr << "WatchlistException caught: " << e.what() << '\n';
+        }
+
+    } catch (const WatchlistException& e) {
         std::cerr << "WatchlistException caught: " << e.what() << '\n';
-    } catch (const std::exception &e) {
+    } catch (const std::exception& e) {
         std::cerr << "Standard exception caught: " << e.what() << '\n';
     }
 
