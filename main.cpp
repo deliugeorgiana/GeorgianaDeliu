@@ -66,7 +66,7 @@ private:
     std::string message;
 
 public:
-    explicit WatchlistException(std::string msg) : message(std::move(msg)) {}
+    [[maybe_unused]] explicit WatchlistException(std::string msg) : message(std::move(msg)) {}
 
     [[nodiscard]] const char* what() const noexcept override {
         return message.c_str();
@@ -521,7 +521,7 @@ int main() {
     DisplayWatchlistInfo(*recommendations);
 
     // Utilizarea Singleton
-    Singleton* singleton = Singleton::GetInstance();
+    [[maybe_unused]] Singleton* singleton = Singleton::GetInstance();
     Singleton::ShowMessage();
 
     // Utilizarea Observer
