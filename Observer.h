@@ -20,10 +20,6 @@ public:
         observers.push_back(observer);
     }
 
-    void Detach(Observer* observer) {
-        observers.erase(std::remove(observers.begin(), observers.end(), observer), observers.end());
-    }
-
     void Notify(const std::string& message) {
         for (auto* observer : observers) {
             observer->Update(message);
