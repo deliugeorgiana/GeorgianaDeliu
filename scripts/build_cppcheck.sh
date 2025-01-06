@@ -34,5 +34,11 @@ cmake --build "${CMAKE_BUILD_DIR}" -j6
 # Add the build directory to the PATH
 export PATH="${CMAKE_BUILD_DIR}/bin:$PATH"
 
+# Ensure the paths exist before running cppcheck
+if [ ! -d "path/to/code" ]; then
+  echo "Error: Directory path/to/code does not exist."
+  exit 1
+fi
+
 # Run cppcheck
 cppcheck --enable=all --inline-suppr --std=c++17 --output-file=cppcheck_report.txt path/to/code
