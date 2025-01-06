@@ -22,6 +22,7 @@ while getopts ":b:o:v:" opt; do
   esac
 done
 
+
 wget "https://github.com/danmar/cppcheck/archive/${CPPCHECK_VER}.zip"
 unzip -q "${CPPCHECK_VER}.zip"
 rm "${CPPCHECK_VER}.zip"
@@ -30,15 +31,3 @@ mv "cppcheck-${CPPCHECK_VER}" cppcheck
 cd cppcheck || { echo "Eroare cd"; exit 1; }
 cmake -S . -B "${CMAKE_BUILD_DIR}" -DEXTERNALS_AS_SYSTEM=ON "${CMAKE_OPTS[@]}"
 cmake --build "${CMAKE_BUILD_DIR}" -j6
-
-# Add the build directory to the PATH
-export PATH="${CMAKE_BUILD_DIR}/bin:$PATH"
-
-# Ensure the paths exist before running cppcheck
-if [ ! -d "path/to/code" ]; then
-  echo "Error: Directory path/to/code does not exist."
-  exit 1
-fi
-
-# Run cppcheck
-cppcheck --enable=all --inline-suppr --std=c++17 --output-file=cppcheck_report.txt path/to/code
