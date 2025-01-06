@@ -27,10 +27,7 @@ public:
         items.push_back(item);
     }
 
-    // Scoate media
-    virtual void RemoveFromWatchlist(const T& item) {
-        items.erase(std::remove(items.begin(), items.end(), item), items.end());
-    }
+
 
     // Afișează watchlist-ul
     virtual void DisplayWatchlist() const {
@@ -38,16 +35,6 @@ public:
         for (const auto& item : items) {
             std::cout << *item << "\n";
         }
-    }
-
-    // Setează elementul favorit
-    void SetFavoriteItem(const T& item) {
-        favoriteItem = item;
-    }
-
-    // Obține elementul favorit
-    T GetFavoriteItem() const {
-        return favoriteItem;
     }
 };
 

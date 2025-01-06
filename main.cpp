@@ -532,6 +532,7 @@ int main() {
     subject.Attach(&observer1);
     subject.Attach(&observer2);
 
+
     subject.Notify("New movie added to watchlist");
 
     return 0;
