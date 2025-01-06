@@ -521,7 +521,7 @@ int main() {
     DisplayWatchlistInfo(*recommendations);
 
     // Utilizarea Singleton
-    [[maybe_unused]] Singleton* singleton = Singleton::GetInstance();
+    [[maybe_unused]] const Singleton* singleton = Singleton::GetInstance();
     Singleton::ShowMessage();
 
     // Utilizarea Observer
