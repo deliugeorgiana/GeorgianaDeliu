@@ -6,50 +6,30 @@
 #include <memory>
 #include <string>
 #include <algorithm>
-#include <functional>
+#include "MediaItem.h"
 
-// Clasa șablon
-template <typename T>
 class Watchlist {
 protected:
     std::string userId;
-    std::vector<T> items;
+    std::vector<std::shared_ptr<MediaItem>> items;
 
 public:
-    explicit Watchlist(std::string user) : userId(std::move(user)) {}
+    //constructor
+    explicit Watchlist(std::string user);
 
+    // destr virt
     virtual ~Watchlist() = default;
 
-    // Adaugă element în watchlist
-    virtual void AddToWatchlist(const T& item) {
-        items.push_back(item);
-    }
+    // adauga media
+    [[maybe_unused]] virtual void AddToWatchlist(const std::shared_ptr<MediaItem>& item);
 
-    // Scoate element din watchlist
-    virtual void RemoveFromWatchlist(const T& item) {
-        items.erase(std::remove(items.begin(), items.end(), item), items.end());
-    }
+    // scoate media
+    [[maybe_unused]] virtual void RemoveFromWatchlist(const std::shared_ptr<MediaItem>& item);
 
-    // Afișează watchlist-ul
-    virtual void DisplayWatchlist() const {
-        std::cout << "Watchlist for " << userId << ":\n";
-        for (const auto& item : items) {
-            std::cout << item << std::endl;
-        }
-    }
+    // afiseaza watchlist ul
+    [[maybe_unused]] virtual void DisplayWatchlist() const;
 
-    // Filtrează elementele după un predicat
-    std::vector<T> Filter(const std::function<bool(const T&)>& predicate) const {
-        std::vector<T> result;
-        std::copy_if(items.begin(), items.end(), std::back_inserter(result), predicate);
-        return result;
-    }
+
 };
-
-// Funcție liberă șablon - comparare două watchlist-uri
-template <typename T>
-bool CompareWatchlists(const Watchlist<T>& wl1, const Watchlist<T>& wl2) {
-    return wl1.items == wl2.items;
-}
 
 #endif
