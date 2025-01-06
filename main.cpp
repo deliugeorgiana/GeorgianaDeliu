@@ -24,7 +24,10 @@
 #include "FavoritesWatchlist.h"
 #include "RecentWatchlist.h"
 #include "RecommendationsWatchlist.h"
-
+#include "WatchlistUtils.h"
+#include "Observer.h"
+#include "ConcreteObserver.h"
+#include "Singleton.h"
 //Exceptions
 
 class MediaException : public std::runtime_error {
@@ -58,7 +61,7 @@ void DisplayActors(const std::vector<std::shared_ptr<Actor>>& actors) {
     }
 }
 
-class WatchlistException : public std::exception {
+class [[maybe_unused]] WatchlistException : public std::exception {
 private:
     std::string message;
 
@@ -423,7 +426,7 @@ int main() {
     std::cout << "Supporting Actor: " << *supportingActor << std::endl;
     std::cout << "Guest Actor: " << *guestActor << std::endl;
 
-
+/*
     /////////////////////////////////WATCHLIST
     std::cout << "\nWATCLIST\n";
     try {
@@ -494,7 +497,42 @@ int main() {
     } catch (const std::exception &e) {
         std::cerr << "Standard exception caught: " << e.what() << '\n';
     }
+*/
 
+    // Crearea watchlist-urilor
+    std::unique_ptr<Watchlist<std::shared_ptr<MediaItem>>> favorites = std::make_unique<FavoritesWatchlist>("User1");
+    std::unique_ptr<Watchlist<std::shared_ptr<MediaItem>>> recent = std::make_unique<RecentWatchlist>("User2");
+    std::unique_ptr<Watchlist<std::shared_ptr<MediaItem>>> recommendations = std::make_unique<RecommendationsWatchlist>("User3");
+
+    // Adăugarea de filme
+    std::shared_ptr<MediaItem> movie1 = std::make_shared<Movie>("Inception");
+    std::shared_ptr<MediaItem> movie2 = std::make_shared<Movie>("The Matrix");
+    std::shared_ptr<MediaItem> movie3 = std::make_shared<Movie>("Interstellar");
+
+    favorites->AddToWatchlist(movie1);
+    favorites->AddToWatchlist(movie2);
+    recent->AddToWatchlist(movie3);
+    recommendations->AddToWatchlist(movie1);
+    recommendations->AddToWatchlist(movie3);
+
+    // Afișarea watchlist-urilor
+    DisplayWatchlistInfo(*favorites);
+    DisplayWatchlistInfo(*recent);
+    DisplayWatchlistInfo(*recommendations);
+
+    // Utilizarea Singleton
+    Singleton* singleton = Singleton::GetInstance();
+    Singleton::ShowMessage();
+
+    // Utilizarea Observer
+    Subject subject;
+    ConcreteObserver observer1("Observer1");
+    ConcreteObserver observer2("Observer2");
+
+    subject.Attach(&observer1);
+    subject.Attach(&observer2);
+
+    subject.Notify("New movie added to watchlist");
 
     return 0;
 }

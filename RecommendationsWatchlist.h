@@ -3,7 +3,7 @@
 
 #include "Watchlist.h"
 
-class [[maybe_unused]] RecommendationsWatchlist : public Watchlist {
+class [[maybe_unused]] RecommendationsWatchlist : public Watchlist <std::shared_ptr<MediaItem>>{
 public:
     explicit RecommendationsWatchlist([[maybe_unused]] std::string user);
 

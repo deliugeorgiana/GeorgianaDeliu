@@ -8,28 +8,47 @@
 #include <algorithm>
 #include "MediaItem.h"
 
+template <typename T>
 class Watchlist {
 protected:
     std::string userId;
-    std::vector<std::shared_ptr<MediaItem>> items;
+    std::vector<T> items;
+    T favoriteItem; // Atribut de tip T
 
 public:
-    //constructor
-    explicit Watchlist(std::string user);
+    // Constructor
+    explicit Watchlist(std::string user) : userId(std::move(user)) {}
 
-    // destr virt
+    // Destructor virtual
     virtual ~Watchlist() = default;
 
-    // adauga media
-    [[maybe_unused]] virtual void AddToWatchlist(const std::shared_ptr<MediaItem>& item);
+    // Adaugă media
+    virtual void AddToWatchlist(const T& item) {
+        items.push_back(item);
+    }
 
-    // scoate media
-    [[maybe_unused]] virtual void RemoveFromWatchlist(const std::shared_ptr<MediaItem>& item);
+    // Scoate media
+    virtual void RemoveFromWatchlist(const T& item) {
+        items.erase(std::remove(items.begin(), items.end(), item), items.end());
+    }
 
-    // afiseaza watchlist ul
-    [[maybe_unused]] virtual void DisplayWatchlist() const;
+    // Afișează watchlist-ul
+    virtual void DisplayWatchlist() const {
+        std::cout << "Watchlist for " << userId << ":\n";
+        for (const auto& item : items) {
+            std::cout << *item << "\n";
+        }
+    }
 
+    // Setează elementul favorit
+    void SetFavoriteItem(const T& item) {
+        favoriteItem = item;
+    }
 
+    // Obține elementul favorit
+    T GetFavoriteItem() const {
+        return favoriteItem;
+    }
 };
 
 #endif

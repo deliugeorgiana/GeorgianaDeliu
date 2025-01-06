@@ -84,6 +84,14 @@ add_executable(${PROJECT_NAME}
         RecommendationsWatchlist.h
         RecentWatchlist.cpp
         RecentWatchlist.h
+        WatchlistUtils.cpp
+        WatchlistUtils.h
+        Observer.cpp
+        Observer.h
+        ConcreteObserver.cpp
+        ConcreteObserver.h
+        Singleton.cpp
+        Singleton.h
 )
 
 include(cmake/CompilerFlags.cmake)
