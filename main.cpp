@@ -524,7 +524,7 @@ int main() {
     [[maybe_unused]] const Singleton* singleton = Singleton::GetInstance();
     Singleton::ShowMessage();
 
-    // Utilizarea Observer
+
     Subject subject;
     ConcreteObserver observer1("Observer1");
     ConcreteObserver observer2("Observer2");
