@@ -15,6 +15,16 @@ include(cmake/Options.cmake)
 
 ###############################################################################
 
+# Ensure Clang is used for compilation
+set(CMAKE_C_COMPILER clang)
+set(CMAKE_CXX_COMPILER clang++)
+
+# Add debugging and MemorySanitizer flags
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -fsanitize=memory -fno-omit-frame-pointer")
+set(CMAKE_LINKER_FLAGS_DEBUG "${CMAKE_LINKER_FLAGS_DEBUG} -fsanitize=memory")
+
+###############################################################################
+
 # external dependencies with FetchContent
 # include(FetchContent)
 #
@@ -27,7 +37,7 @@ include(cmake/Options.cmake)
 # FetchContent_Declare(
 #         SomeLib
 #         GIT_REPOSITORY https://github.com/<SomeUser>/<SomeLib>.git
-#         GIT_TAG        <some_git_hash> # <which tag/branch @ <some_date>>
+#         GIT_TAG        <some_git_hash> # <which tag/branch @ <some_date>
 #         GIT_SHALLOW    1  # works only with branches or tags, not with arbitrary commit hashes
 # )
 #
@@ -43,7 +53,7 @@ include(cmake/Options.cmake)
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
 add_executable(${PROJECT_NAME}
-    main.cpp
+        main.cpp
         MediaItem.cpp
         MediaItem.h
         User.cpp
@@ -94,6 +104,7 @@ add_executable(${PROJECT_NAME}
         Singleton.h
 )
 
+# Add custom compiler flags (if needed)
 include(cmake/CompilerFlags.cmake)
 
 ###############################################################################
