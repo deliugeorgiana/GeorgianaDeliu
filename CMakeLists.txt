@@ -2,11 +2,7 @@ cmake_minimum_required(VERSION 3.26)
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing executable name in this file
 # for now, the project name is used as the executable name
-set(MAIN_PROJECT_NAME "Proiect")
-set(MAIN_EXECUTABLE_NAME "${MAIN_PROJECT_NAME}")
-
-
-project(${MAIN_PROJECT_NAME})
+project(oop)
 # set(CMAKE_PROJECT_VERSION_MAJOR 0)
 # set(CMAKE_PROJECT_VERSION_MINOR 0)
 # set(CMAKE_PROJECT_VERSION_PATCH 1)
@@ -16,9 +12,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 include(cmake/Options.cmake)
-include_directories(inc)
-include_directories(src)
-include_directories(input_files)
 
 ###############################################################################
 
@@ -49,17 +42,56 @@ include_directories(input_files)
 ###############################################################################
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
-add_executable(${MAIN_EXECUTABLE_NAME}
-        main.cpp
-        generated/src/Helper.cpp
-        src/Menu.cpp
-        src/Category.cpp
-        src/Content.cpp
-        src/Episode.cpp
-        src/Movie.cpp
-        src/TVShow.cpp
-        src/User.cpp
-        src/Watchlist.cpp
+add_executable(${PROJECT_NAME}
+    main.cpp
+        MediaItem.cpp
+        MediaItem.h
+        User.cpp
+        User.h
+        Actor.cpp
+        Actor.h
+        Category.cpp
+        Category.h
+        Watchlist.cpp
+        Watchlist.h
+        Movie.cpp
+        Movie.h
+        Serial.cpp
+        Serial.h
+        TVShow.cpp
+        TVShow.h
+        DramaCategory.cpp
+        DramaCategory.h
+        SciFiCategory.cpp
+        SciFiCategory.h
+        ComedyCategory.cpp
+        ComedyCategory.h
+        AdminUser.cpp
+        AdminUser.h
+        PremiumUser.cpp
+        PremiumUser.h
+        GuestUser.cpp
+        GuestUser.h
+        LeadActor.cpp
+        LeadActor.h
+        SupportingActor.cpp
+        SupportingActor.h
+        GuestActor.cpp
+        GuestActor.h
+        FavoritesWatchlist.cpp
+        FavoritesWatchlist.h
+        RecommendationsWatchlist.cpp
+        RecommendationsWatchlist.h
+        RecentWatchlist.cpp
+        RecentWatchlist.h
+        WatchlistUtils.cpp
+        WatchlistUtils.h
+        Observer.cpp
+        Observer.h
+        ConcreteObserver.cpp
+        ConcreteObserver.h
+        Singleton.cpp
+        Singleton.h
 )
 
 include(cmake/CompilerFlags.cmake)
@@ -67,22 +99,21 @@ include(cmake/CompilerFlags.cmake)
 ###############################################################################
 
 # use SYSTEM so cppcheck and clang-tidy do not report warnings from these directories
-target_include_directories(${MAIN_EXECUTABLE_NAME} SYSTEM PRIVATE generated/include)
-# target_include_directories(${MAIN_EXECUTABLE_NAME} SYSTEM PRIVATE ext/<SomeHppLib>/include)
-# target_include_directories(${MAIN_EXECUTABLE_NAME} SYSTEM PRIVATE ${<SomeLib>_SOURCE_DIR}/include)
-# target_link_directories(${MAIN_EXECUTABLE_NAME} PRIVATE ${<SomeLib>_BINARY_DIR}/lib)
-# target_link_libraries(${MAIN_EXECUTABLE_NAME} <SomeLib>)
+# target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ext/<SomeHppLib>/include)
+# target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${<SomeLib>_SOURCE_DIR}/include)
+# target_link_directories(${PROJECT_NAME} PRIVATE ${<SomeLib>_BINARY_DIR}/lib)
+# target_link_libraries(${PROJECT_NAME} <SomeLib>)
 
 ###############################################################################
 
 # copy binaries to "bin" folder; these are uploaded as artifacts on each release
 # DESTINATION_DIR is set as "bin" in cmake/Options.cmake:6
-install(TARGETS ${MAIN_EXECUTABLE_NAME} DESTINATION ${DESTINATION_DIR})
-if (APPLE)
+install(TARGETS ${PROJECT_NAME} DESTINATION ${DESTINATION_DIR})
+if(APPLE)
     install(FILES launcher.command DESTINATION ${DESTINATION_DIR})
-endif ()
+endif()
 
 include(cmake/CopyHelper.cmake)
-copy_files(FILES tastatura.txt COPY_TO_DESTINATION TARGET_NAME ${MAIN_EXECUTABLE_NAME})
-# copy_files(FILES tastatura.txt config.json DIRECTORY images sounds COPY_TO_DESTINATION TARGET_NAME ${MAIN_EXECUTABLE_NAME})
-# copy_files(DIRECTORY images sounds COPY_TO_DESTINATION TARGET_NAME ${MAIN_EXECUTABLE_NAME})
+copy_files(FILES tastatura.txt)
+# copy_files(FILES tastatura.txt config.json DIRECTORY images sounds)
+# copy_files(DIRECTORY images sounds)
