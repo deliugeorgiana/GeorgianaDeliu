@@ -43,8 +43,55 @@ include(cmake/Options.cmake)
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
 add_executable(${PROJECT_NAME}
-        main.cpp
-        generated/src/Helper.cpp
+    main.cpp
+        MediaItem.cpp
+        MediaItem.h
+        User.cpp
+        User.h
+        Actor.cpp
+        Actor.h
+        Category.cpp
+        Category.h
+        Watchlist.cpp
+        Watchlist.h
+        Movie.cpp
+        Movie.h
+        Serial.cpp
+        Serial.h
+        TVShow.cpp
+        TVShow.h
+        DramaCategory.cpp
+        DramaCategory.h
+        SciFiCategory.cpp
+        SciFiCategory.h
+        ComedyCategory.cpp
+        ComedyCategory.h
+        AdminUser.cpp
+        AdminUser.h
+        PremiumUser.cpp
+        PremiumUser.h
+        GuestUser.cpp
+        GuestUser.h
+        LeadActor.cpp
+        LeadActor.h
+        SupportingActor.cpp
+        SupportingActor.h
+        GuestActor.cpp
+        GuestActor.h
+        FavoritesWatchlist.cpp
+        FavoritesWatchlist.h
+        RecommendationsWatchlist.cpp
+        RecommendationsWatchlist.h
+        RecentWatchlist.cpp
+        RecentWatchlist.h
+        WatchlistUtils.cpp
+        WatchlistUtils.h
+        Observer.cpp
+        Observer.h
+        ConcreteObserver.cpp
+        ConcreteObserver.h
+        Singleton.cpp
+        Singleton.h
 )
 
 include(cmake/CompilerFlags.cmake)
@@ -52,7 +99,6 @@ include(cmake/CompilerFlags.cmake)
 ###############################################################################
 
 # use SYSTEM so cppcheck and clang-tidy do not report warnings from these directories
-target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE generated/include)
 # target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ext/<SomeHppLib>/include)
 # target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${<SomeLib>_SOURCE_DIR}/include)
 # target_link_directories(${PROJECT_NAME} PRIVATE ${<SomeLib>_BINARY_DIR}/lib)
@@ -71,3 +117,4 @@ include(cmake/CopyHelper.cmake)
 copy_files(FILES tastatura.txt)
 # copy_files(FILES tastatura.txt config.json DIRECTORY images sounds)
 # copy_files(DIRECTORY images sounds)
+
