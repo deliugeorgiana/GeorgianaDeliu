@@ -15,6 +15,12 @@ include(cmake/Options.cmake)
 
 ###############################################################################
 
+# Enable AddressSanitizer
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
+set(CMAKE_LINKER_FLAGS "${CMAKE_LINKER_FLAGS} -fsanitize=address")
+
+###############################################################################
+
 # external dependencies with FetchContent
 # include(FetchContent)
 #
@@ -43,7 +49,7 @@ include(cmake/Options.cmake)
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
 add_executable(${PROJECT_NAME}
-    main.cpp
+        main.cpp
         MediaItem.cpp
         MediaItem.h
         User.cpp
@@ -117,9 +123,3 @@ include(cmake/CopyHelper.cmake)
 copy_files(FILES tastatura.txt)
 # copy_files(FILES tastatura.txt config.json DIRECTORY images sounds)
 # copy_files(DIRECTORY images sounds)
-
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fno-omit-frame-pointer -g")
-endif()
-
-target_link_options(${PROJECT_NAME} PRIVATE -fsanitize=address)
