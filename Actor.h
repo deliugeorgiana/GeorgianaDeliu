@@ -21,7 +21,7 @@ public:
     void DisplayFilms() const;
 
     // adds a movie
-    [[maybe_unused]] [[maybe_unused]] void AddFilm(const std::shared_ptr<MediaItem>& item);
+    void AddFilm(const std::shared_ptr<MediaItem>& item);
 
     //metoda virtuala pt rolul primcipal
     [[nodiscard]] virtual std::string GetMainRole() const;
