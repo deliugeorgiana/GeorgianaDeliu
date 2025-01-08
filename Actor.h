@@ -1,6 +1,5 @@
 #ifndef ACTOR_H
 #define ACTOR_H
-
 #include <string>
 #include <vector>
 #include <memory>
@@ -33,6 +32,8 @@ public:
     [[nodiscard]] const std::string& GetName() const;
 
     friend std::ostream& operator<<(std::ostream& os, const Actor& actor);
+
+
 };
 
 #endif

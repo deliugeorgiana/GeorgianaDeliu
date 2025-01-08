@@ -18,7 +18,6 @@ void Actor::DisplayFilms() const {
     }
 }
 
-
 // Main role
 [[nodiscard]] std::string Actor::GetMainRole() const {
     return !filmography.empty() ? filmography.front()->GetTitle() : "N/A";
