@@ -15,12 +15,6 @@ include(cmake/Options.cmake)
 
 ###############################################################################
 
-# Enable AddressSanitizer
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
-set(CMAKE_LINKER_FLAGS "${CMAKE_LINKER_FLAGS} -fsanitize=address")
-
-###############################################################################
-
 # external dependencies with FetchContent
 # include(FetchContent)
 #
@@ -50,54 +44,7 @@ set(CMAKE_LINKER_FLAGS "${CMAKE_LINKER_FLAGS} -fsanitize=address")
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
 add_executable(${PROJECT_NAME}
         main.cpp
-        MediaItem.cpp
-        MediaItem.h
-        User.cpp
-        User.h
-        Actor.cpp
-        Actor.h
-        Category.cpp
-        Category.h
-        Watchlist.cpp
-        Watchlist.h
-        Movie.cpp
-        Movie.h
-        Serial.cpp
-        Serial.h
-        TVShow.cpp
-        TVShow.h
-        DramaCategory.cpp
-        DramaCategory.h
-        SciFiCategory.cpp
-        SciFiCategory.h
-        ComedyCategory.cpp
-        ComedyCategory.h
-        AdminUser.cpp
-        AdminUser.h
-        PremiumUser.cpp
-        PremiumUser.h
-        GuestUser.cpp
-        GuestUser.h
-        LeadActor.cpp
-        LeadActor.h
-        SupportingActor.cpp
-        SupportingActor.h
-        GuestActor.cpp
-        GuestActor.h
-        FavoritesWatchlist.cpp
-        FavoritesWatchlist.h
-        RecommendationsWatchlist.cpp
-        RecommendationsWatchlist.h
-        RecentWatchlist.cpp
-        RecentWatchlist.h
-        WatchlistUtils.cpp
-        WatchlistUtils.h
-        Observer.cpp
-        Observer.h
-        ConcreteObserver.cpp
-        ConcreteObserver.h
-        Singleton.cpp
-        Singleton.h
+        generated/src/Helper.cpp
 )
 
 include(cmake/CompilerFlags.cmake)
@@ -105,6 +52,7 @@ include(cmake/CompilerFlags.cmake)
 ###############################################################################
 
 # use SYSTEM so cppcheck and clang-tidy do not report warnings from these directories
+target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE generated/include)
 # target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ext/<SomeHppLib>/include)
 # target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${<SomeLib>_SOURCE_DIR}/include)
 # target_link_directories(${PROJECT_NAME} PRIVATE ${<SomeLib>_BINARY_DIR}/lib)
