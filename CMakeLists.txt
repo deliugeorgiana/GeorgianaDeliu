@@ -89,8 +89,6 @@ add_executable(${PROJECT_NAME}
         FavoritesWatchlist.h
         RecommendationsWatchlist.cpp
         RecommendationsWatchlist.h
-        Observer.cpp
-        Observer.h
         Menu.cpp
         Menu.h
 )
