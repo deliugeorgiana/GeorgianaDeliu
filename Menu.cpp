@@ -9,6 +9,9 @@
 #include "DramaCategory.h"
 #include "ComedyCategory.h"
 #include "SciFiCategory.h"
+#include "AdminUser.h"
+#include "GuestUser.h"
+#include "PremiumUser.h"
 #include <iostream>
 #include <memory>
 #include <vector>
@@ -49,6 +52,11 @@ void Menu::run() {
     shared_ptr<Category<int>> comedyCategory = make_shared<ComedyCategory<int>>("Romantic Comedy", 3);
     shared_ptr<Category<int>> sciFiCategory = make_shared<SciFiCategory<int>>("Space Exploration", 10);
 
+    // Create user instances
+    shared_ptr<AdminUser<string>> adminUser = AdminUser<string>::GetInstance("Admin", "English");
+    shared_ptr<GuestUser<string>> guestUser = make_shared<GuestUser<string>>("Guest", "Spanish");
+    shared_ptr<PremiumUser<string>> premiumUser = make_shared<PremiumUser<string>>("PremiumUser", "English");
+
     int choice = -1;
     while (choice != 0) {
         cout << "\n--- Media Menu ---\n";
@@ -63,6 +71,9 @@ void Menu::run() {
         cout << "9. Display Films of Actor\n";  // Option to display actor's films
         cout << "10. Display Actor's Main Role and Role Type\n";  // Option to display actor's role details
         cout << "11. Display Category Info\n";  // Option to display category information
+        cout << "12. Display User Profiles\n";  // Option to display user profiles
+        cout << "13. Report User (Admin only)\n";  // Option to report user (Admin only)
+        cout << "14. Recommend Content (Premium only)\n";  // Option to recommend content (Premium only)
         cout << "0. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
@@ -190,6 +201,56 @@ void Menu::run() {
                 cout << *dramaCategory << "\n";
                 cout << *comedyCategory << "\n";
                 cout << *sciFiCategory << "\n";
+                break;
+            }
+                // Option to display user favorites and favorite details
+            case 12: {  // Display user profiles and their favorites
+                cout << "\nDisplaying user profiles:\n";
+                adminUser->DisplayProfile();
+                guestUser->DisplayProfile();
+                premiumUser->DisplayProfile();
+
+                // Displaying favorite count and top favorite for each user
+                cout << "\nDisplaying favorites:\n";
+                cout << adminUser->GetName() << " has " << adminUser->FavoriteCount() << " favorite items.\n";
+                cout << "Top Favorite: " << adminUser->GetTopFavorite() << endl;
+                adminUser->PrintFavoriteDetails(adminUser->GetTopFavorite());
+
+                cout << guestUser->GetName() << " has " << guestUser->FavoriteCount() << " favorite items.\n";
+                cout << "Top Favorite: " << guestUser->GetTopFavorite() << endl;
+                guestUser->PrintFavoriteDetails(guestUser->GetTopFavorite());
+
+                cout << premiumUser->GetName() << " has " << premiumUser->FavoriteCount() << " favorite items.\n";
+                cout << "Top Favorite: " << premiumUser->GetTopFavorite() << endl;
+                premiumUser->PrintFavoriteDetails(premiumUser->GetTopFavorite());
+
+                break;
+            }
+
+            case 13: {  // Report user (admin only)
+                cout << "Enter the name of the user to report: ";
+                string userName;
+                cin.ignore();
+                getline(cin, userName);
+
+                if (userName == adminUser->GetName()) {
+                    cout << "Admin users cannot be reported.\n";
+                } else {
+                    AdminUser<string>::ReportUser(*adminUser);  // Admin reporting
+                }
+                break;
+            }
+            case 14: {  // Recommend content (premium only)
+                cout << "Enter the name of the premium user to recommend content for: ";
+                string userName;
+                cin.ignore();
+                getline(cin, userName);
+
+                if (userName == premiumUser->GetName()) {
+                    premiumUser->RecommendContent();  // Recommend content for premium user
+                } else {
+                    cout << "Only premium users can receive content recommendations.\n";
+                }
                 break;
             }
             case 0:

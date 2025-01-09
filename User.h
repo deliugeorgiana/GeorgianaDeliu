@@ -39,11 +39,6 @@ public:
     // Destructor virtual
     virtual ~User() = default;
 
-    // Adaugă un element în lista de favorite
-    void AddToFavorites(const T& item) {
-        favorites.push_back(item);
-    }
-
     // Obține primul element favorit
     [[nodiscard]] T GetTopFavorite() const {
         if (!favorites.empty()) return favorites.front();
