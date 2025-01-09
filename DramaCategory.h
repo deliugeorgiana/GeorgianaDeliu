@@ -3,16 +3,19 @@
 
 #include "Category.h"
 
-class DramaCategory : public Category {
+template <typename T>
+class DramaCategory : public Category<T> {
 public:
-    // constructor explicit
-    explicit DramaCategory(const std::string& name);
+    // Constructor explicit
+    DramaCategory(const std::string& name, T attribute)
+            : Category<T>(name, attribute) {}
 
-    // suprascriere
-    [[nodiscard]] std::string GetCategoryName() const override;
-
-    // destructor virt
     ~DramaCategory() override = default;
+
+    // Suprascrierea metodei virtuale
+    [[nodiscard]] std::string GetCategoryName() const override {
+        return "Drama: " + this->name + " (" + std::to_string(this->additionalAttribute) + ")";
+    }
 };
 
 #endif

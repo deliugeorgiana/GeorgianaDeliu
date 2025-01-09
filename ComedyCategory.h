@@ -3,17 +3,20 @@
 
 #include "Category.h"
 
-//clasa derivata
-class ComedyCategory : public Category {
+// Clasa derivată din clasa șablon Category
+template <typename T>
+class ComedyCategory : public Category<T> {
 public:
-    //constr explicit
-    explicit ComedyCategory(const std::string& name);
+    // Constructor explicit
+    ComedyCategory(const std::string& name, T attribute)
+            : Category<T>(name, attribute) {}
 
-    ~ComedyCategory() override =default;
+    ~ComedyCategory() override = default;
 
-    // suprascriere
-    [[nodiscard]] std::string GetCategoryName() const override;
-
+    // Suprascrierea metodei virtuale
+    [[nodiscard]] std::string GetCategoryName() const override {
+        return "Comedy: " + this->name + " (" + std::to_string(this->additionalAttribute) + ")";
+    }
 };
 
 #endif
