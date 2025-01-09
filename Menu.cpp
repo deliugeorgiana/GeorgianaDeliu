@@ -5,6 +5,10 @@
 #include "Actor.h"
 #include "LeadActor.h"
 #include "SupportingActor.h"
+#include "Category.h"
+#include "DramaCategory.h"
+#include "ComedyCategory.h"
+#include "SciFiCategory.h"
 #include <iostream>
 #include <memory>
 #include <vector>
@@ -40,6 +44,11 @@ void Menu::run() {
     actor1->AddFilm(items[0]);  // Adding "Inception" movie to Leonardo DiCaprio's filmography
     actor2->AddFilm(items[1]);  // Adding "Breaking Bad" TV Show to Aaron Paul's filmography
 
+    // Create categories
+    shared_ptr<Category<int>> dramaCategory = make_shared<DramaCategory<int>>("Shakespearean Tragedy", 5);
+    shared_ptr<Category<int>> comedyCategory = make_shared<ComedyCategory<int>>("Romantic Comedy", 3);
+    shared_ptr<Category<int>> sciFiCategory = make_shared<SciFiCategory<int>>("Space Exploration", 10);
+
     int choice = -1;
     while (choice != 0) {
         cout << "\n--- Media Menu ---\n";
@@ -53,6 +62,7 @@ void Menu::run() {
         cout << "8. Show Item Count\n";  // New option to show item count
         cout << "9. Display Films of Actor\n";  // Option to display actor's films
         cout << "10. Display Actor's Main Role and Role Type\n";  // Option to display actor's role details
+        cout << "11. Display Category Info\n";  // Option to display category information
         cout << "0. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
@@ -173,6 +183,13 @@ void Menu::run() {
                 } else {
                     cout << "Actor not found.\n";
                 }
+                break;
+            }
+            case 11: {  // Display category information
+                cout << "\nCategories:\n";
+                cout << *dramaCategory << "\n";
+                cout << *comedyCategory << "\n";
+                cout << *sciFiCategory << "\n";
                 break;
             }
             case 0:

@@ -22,15 +22,6 @@ public:
     // Funcție virtuală pură pentru a obține numele categoriei
     [[nodiscard]] virtual std::string GetCategoryName() const = 0;
 
-    // Getter pentru atributul generic
-    [[nodiscard]] T GetAdditionalAttribute() const {
-        return additionalAttribute;
-    }
-
-    // Setter pentru atributul generic
-    void SetAdditionalAttribute(const T& attribute) {
-        additionalAttribute = attribute;
-    }
 
     // Supradefinirea operatorului << pentru afișare
     friend std::ostream& operator<<(std::ostream& os, const Category& category) {
