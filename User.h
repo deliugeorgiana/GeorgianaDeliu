@@ -39,15 +39,6 @@ public:
     // Destructor virtual
     virtual ~User() = default;
 
-    // Obține primul element favorit
-    [[nodiscard]] T GetTopFavorite() const {
-        if (!favorites.empty()) return favorites.front();
-        return T{};  // Return a default-constructed T if no favorites
-    }
-
-    // Obține numărul de elemente favorite
-    [[nodiscard]] size_t FavoriteCount() const { return favorites.size(); }
-
     // Getteri virtuali
     [[nodiscard]] virtual const std::string& GetName() const { return name; }
     [[nodiscard]] virtual const std::string& GetPreferredLanguage() const { return preferredLanguage; }
@@ -61,12 +52,6 @@ public:
            << ", Language: " << user.preferredLanguage
            << ", Favorites: " << user.favorites.size();
         return os;
-    }
-
-    // Funcție șablon
-    template <typename U>
-    void PrintFavoriteDetails(const U& favorite) const {
-        std::cout << "Favorite item details: " << favorite << std::endl;
     }
 };
 
