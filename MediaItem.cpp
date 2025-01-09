@@ -23,11 +23,6 @@ const std::string& MediaItem::GetDescription() const {
     return description;
 }
 
-// info MediaItem
-[[maybe_unused]] [[maybe_unused]] std::string MediaItem::GetInfo() const {
-    return title + ": " + description;
-}
-
 // suprascriere a op <<
 std::ostream& operator<<(std::ostream& os, const MediaItem& media) {
     os << "Title: " << media.GetTitle()

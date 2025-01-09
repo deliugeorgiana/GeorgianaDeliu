@@ -45,7 +45,6 @@ public:
 
     static const std::vector<std::string>& GetGenres();
 
-    [[maybe_unused]] [[nodiscard]] std::string GetInfo() const;
 };
 
 #endif
