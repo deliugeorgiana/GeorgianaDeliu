@@ -24,7 +24,7 @@ const std::string& MediaItem::GetDescription() const {
 }
 
 // info MediaItem
-std::string MediaItem::GetInfo() const {
+[[maybe_unused]] std::string MediaItem::GetInfo() const {
     return title + ": " + description;
 }
 
@@ -36,14 +36,14 @@ std::ostream& operator<<(std::ostream& os, const MediaItem& media) {
 }
 
 // Static function implementations
-int MediaItem::GetItemCount() {
+[[maybe_unused]] int MediaItem::GetItemCount() {
     return itemCount;
 }
 
-void MediaItem::AddGenre(const std::string& genre) {
+[[maybe_unused]] void MediaItem::AddGenre(const std::string& genre) {
     genres.push_back(genre);
 }
 
-const std::vector<std::string>& MediaItem::GetGenres() {
+[[maybe_unused]] const std::vector<std::string>& MediaItem::GetGenres() {
     return genres;
 }

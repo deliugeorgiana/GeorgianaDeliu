@@ -25,7 +25,7 @@ public:
     // Virtual destructor
     virtual ~MediaItem() = default;
 
-    void display() const {
+    [[maybe_unused]] void display() const {
         std::cout << "Title: " << title << ", Genre: " << description << ", Rating: " << rating << std::endl;
     }
 
@@ -33,10 +33,10 @@ public:
     [[nodiscard]] virtual float GetRating() const = 0;
 
     // Virtual function for type
-    [[nodiscard]] virtual std::string GetType() const = 0;
+    [[maybe_unused]] [[nodiscard]] virtual std::string GetType() const = 0;
 
     // Virtual function for info
-    [[nodiscard]] virtual std::string GetInfo() const;
+    [[maybe_unused]] [[nodiscard]] virtual std::string GetInfo() const;
 
     // getter title
     [[nodiscard]] const std::string& GetTitle() const;
@@ -49,9 +49,11 @@ public:
 
     [[nodiscard]] virtual std::shared_ptr<MediaItem> Clone() const = 0;
 
-    static int GetItemCount();
-    static void AddGenre(const std::string& genre);
-    static const std::vector<std::string>& GetGenres();
+    [[maybe_unused]] static int GetItemCount();
+
+    [[maybe_unused]] static void AddGenre(const std::string& genre);
+
+    [[maybe_unused]] static const std::vector<std::string>& GetGenres();
 };
 
 #endif

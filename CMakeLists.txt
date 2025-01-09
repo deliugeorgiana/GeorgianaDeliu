@@ -85,22 +85,14 @@ add_executable(${PROJECT_NAME}
         LeadActor.h
         SupportingActor.cpp
         SupportingActor.h
-        GuestActor.cpp
-        GuestActor.h
         FavoritesWatchlist.cpp
         FavoritesWatchlist.h
         RecommendationsWatchlist.cpp
         RecommendationsWatchlist.h
-        RecentWatchlist.cpp
-        RecentWatchlist.h
-        WatchlistUtils.cpp
-        WatchlistUtils.h
         Observer.cpp
         Observer.h
-        ConcreteObserver.cpp
-        ConcreteObserver.h
-        Singleton.cpp
-        Singleton.h
+        Menu.cpp
+        Menu.h
 )
 
 include(cmake/CompilerFlags.cmake)

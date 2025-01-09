@@ -7,11 +7,12 @@
 #include <memory>
 #include "MediaItem.h"
 
+template <typename T>
 class User {
 protected:
     std::string name;
     std::string preferredLanguage;
-    std::vector<std::shared_ptr<MediaItem>> favorites;
+    std::vector<T> favorites;  // Favorite items can now be of any type T
 
 public:
     // Constructor cu validare
@@ -39,14 +40,14 @@ public:
     virtual ~User() = default;
 
     // Adaugă un element în lista de favorite
-    void AddToFavorites(const std::shared_ptr<MediaItem>& item) {
+    void AddToFavorites(const T& item) {
         favorites.push_back(item);
     }
 
     // Obține primul element favorit
-    [[nodiscard]] std::shared_ptr<MediaItem> GetTopFavorite() const {
+    [[nodiscard]] T GetTopFavorite() const {
         if (!favorites.empty()) return favorites.front();
-        return nullptr;
+        return T{};  // Return a default-constructed T if no favorites
     }
 
     // Obține numărul de elemente favorite
@@ -59,14 +60,18 @@ public:
     // Funcție virtuală pură pentru afișare profil
     virtual void DisplayProfile() const = 0;
 
-
-
     // Suprascriere operator << pentru afișare
     friend std::ostream& operator<<(std::ostream& os, const User& user) {
         os << "User: " << user.name
            << ", Language: " << user.preferredLanguage
            << ", Favorites: " << user.favorites.size();
         return os;
+    }
+
+    // Funcție șablon
+    template <typename U>
+    void PrintFavoriteDetails(const U& favorite) const {
+        std::cout << "Favorite item details: " << favorite << std::endl;
     }
 };
 
