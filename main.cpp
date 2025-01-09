@@ -29,149 +29,53 @@
 #include "ConcreteObserver.h"
 #include "Singleton.h"
 
-#include <iostream>
-#include <vector>
-#include <memory>
-#include "MediaItem.h"
-#include "Movie.h" // Presupun că ai clase derivate precum Movie
-#include "Serial.h"
-#include "TVShow.h"
-
-void DisplayMenu() {
-    std::cout << "\n=== ShowRadar Menu ===\n";
-    std::cout << "1. Add a Movie\n";
-    std::cout << "2. Add a Serial\n";
-    std::cout << "3. Add a TV Show\n";
-    std::cout << "4. List All Media Items\n";
-    std::cout << "5. Add a Genre\n";
-    std::cout << "6. List All Genres\n";
-    std::cout << "0. Exit\n";
-    std::cout << "Enter your choice: ";
-}
-
-void AddMovie(std::vector<std::shared_ptr<MediaItem>>& mediaItems) {
-    std::string title, description;
-    float rating;
-
-    std::cout << "Enter Movie Title: ";
-    std::cin.ignore();
-    std::getline(std::cin, title);
-
-    std::cout << "Enter Movie Description: ";
-    std::getline(std::cin, description);
-
-    std::cout << "Enter Movie Rating: ";
-    std::cin >> rating;
-
-    mediaItems.push_back(std::make_shared<Movie>(title, description, rating));
-    std::cout << "Movie added successfully!\n";
-}
-
-void AddSerial(std::vector<std::shared_ptr<MediaItem>>& mediaItems) {
-    std::string title, description;
-    float rating;
-
-    std::cout << "Enter Serial Title: ";
-    std::cin.ignore();
-    std::getline(std::cin, title);
-
-    std::cout << "Enter Serial Description: ";
-    std::getline(std::cin, description);
-
-    std::cout << "Enter Serial Rating: ";
-    std::cin >> rating;
-
-    mediaItems.push_back(std::make_shared<Serial>(title, description, rating));
-    std::cout << "Serial added successfully!\n";
-}
-
-void AddTVShow(std::vector<std::shared_ptr<MediaItem>>& mediaItems) {
-    std::string title, description;
-    float rating;
-
-    std::cout << "Enter TV Show Title: ";
-    std::cin.ignore();
-    std::getline(std::cin, title);
-
-    std::cout << "Enter TV Show Description: ";
-    std::getline(std::cin, description);
-
-    std::cout << "Enter TV Show Rating: ";
-    std::cin >> rating;
-
-    mediaItems.push_back(std::make_shared<TVShow>(title, description, rating));
-    std::cout << "TV Show added successfully!\n";
-}
-
-void ListMediaItems(const std::vector<std::shared_ptr<MediaItem>>& mediaItems) {
-    if (mediaItems.empty()) {
-        std::cout << "No media items available.\n";
-        return;
-    }
-
-    std::cout << "\n=== Media Items ===\n";
-    for (const auto& item : mediaItems) {
-        std::cout << *item << "\n";
-    }
-}
-
-void AddGenre() {
-    std::string genre;
-    std::cout << "Enter Genre: ";
-    std::cin.ignore();
-    std::getline(std::cin, genre);
-
-    MediaItem::AddGenre(genre);
-    std::cout << "Genre added successfully!\n";
-}
-
-void ListGenres() {
-    const auto& genres = MediaItem::GetGenres();
-    if (genres.empty()) {
-        std::cout << "No genres available.\n";
-        return;
-    }
-
-    std::cout << "\n=== Available Genres ===\n";
-    for (const auto& genre : genres) {
-        std::cout << genre << "\n";
-    }
-}
 
 int main() {
-    std::vector<std::shared_ptr<MediaItem>> mediaItems;
-    int choice;
+    // Creare obiecte
+    std::shared_ptr<MediaItem> movie1 = std::make_shared<Movie>("Inception", "A mind-bending thriller.", 8.8f);
+    std::shared_ptr<MediaItem> serial1 = std::make_shared<Serial>("Breaking Bad", "A chemistry teacher turned meth manufacturer.", 9.5f);
+    std::shared_ptr<MediaItem> tvShow1 = std::make_shared<TVShow>("The Office", "A mockumentary about office life.", 8.9f);
 
-    do {
-        DisplayMenu();
-        std::cin >> choice;
+    // Folosirea funcției GetItemCount
+    std::cout << "Total Media Items created: " << MediaItem::GetItemCount() << std::endl;
 
-        switch (choice) {
-            case 1:
-                AddMovie(mediaItems);
-                break;
-            case 2:
-                AddSerial(mediaItems);
-                break;
-            case 3:
-                AddTVShow(mediaItems);
-                break;
-            case 4:
-                ListMediaItems(mediaItems);
-                break;
-            case 5:
-                AddGenre();
-                break;
-            case 6:
-                ListGenres();
-                break;
-            case 0:
-                std::cout << "Exiting... Goodbye!\n";
-                break;
-            default:
-                std::cout << "Invalid choice. Please try again.\n";
-        }
-    } while (choice != 0);
+    // Adăugarea unui gen
+    MediaItem::AddGenre("Sci-Fi");
+    MediaItem::AddGenre("Drama");
+    MediaItem::AddGenre("Comedy");
+
+    // Afișare informații folosind GetInfo
+    std::cout << "Movie Info: " << movie1->GetInfo() << std::endl;
+    std::cout << "Serial Info: " << serial1->GetInfo() << std::endl;
+    std::cout << "TV Show Info: " << tvShow1->GetInfo() << std::endl;
+
+    // Folosirea display pentru a afișa obiectele media
+    movie1->display();
+    serial1->display();
+    tvShow1->display();
+
+    // Afișare tipuri de media folosind GetType
+    std::cout << "Movie type: " << movie1->GetType() << std::endl;
+    std::cout << "Serial type: " << serial1->GetType() << std::endl;
+    std::cout << "TV Show type: " << tvShow1->GetType() << std::endl;
+
+    // Afișare genuri folosind GetGenres
+    std::cout << "Genres for all MediaItems: ";
+    const std::vector<std::string>& genres = MediaItem::GetGenres();
+    for (const auto& genre : genres) {
+        std::cout << genre << " ";
+    }
+    std::cout << std::endl;
+
+    // Clonarea obiectelor media folosind Clone
+    std::shared_ptr<MediaItem> clonedMovie = movie1->Clone();
+    std::shared_ptr<MediaItem> clonedSerial = serial1->Clone();
+    std::shared_ptr<MediaItem> clonedTVShow = tvShow1->Clone();
+
+    // Afișarea clonelor
+    std::cout << "Cloned Movie: " << *clonedMovie << std::endl;
+    std::cout << "Cloned Serial: " << *clonedSerial << std::endl;
+    std::cout << "Cloned TV Show: " << *clonedTVShow << std::endl;
 
     return 0;
 }

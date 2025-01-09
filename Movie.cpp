@@ -11,6 +11,7 @@ Movie::Movie([[maybe_unused]] std::string title, [[maybe_unused]] std::string de
 
 
 // Virtual function for rating
+
 float Movie::GetRating() const {
     return rating;
 }
