@@ -25,10 +25,6 @@ public:
     // Virtual destructor
     virtual ~MediaItem() = default;
 
-    [[maybe_unused]] void display() const {
-        std::cout << "Title: " << title << ", Genre: " << description << ", Rating: " << rating << std::endl;
-    }
-
     // Virtual function fot rating
     [[nodiscard]] virtual float GetRating() const = 0;
 
