@@ -61,8 +61,6 @@ add_executable(${PROJECT_NAME}
         Actor.h
         Category.cpp
         Category.h
-        Watchlist.cpp
-        Watchlist.h
         Movie.cpp
         Movie.h
         Serial.cpp
@@ -85,10 +83,6 @@ add_executable(${PROJECT_NAME}
         LeadActor.h
         SupportingActor.cpp
         SupportingActor.h
-        FavoritesWatchlist.cpp
-        FavoritesWatchlist.h
-        RecommendationsWatchlist.cpp
-        RecommendationsWatchlist.h
         Menu.cpp
         Menu.h
 )

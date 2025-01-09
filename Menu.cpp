@@ -26,6 +26,7 @@ Menu& Menu::instance() {
     return uniqueInstance;
 }
 
+
 // Run the interactive menu
 void Menu::run() {
     vector<shared_ptr<MediaItem>> items;
@@ -57,6 +58,7 @@ void Menu::run() {
     shared_ptr<GuestUser<string>> guestUser = make_shared<GuestUser<string>>("Guest", "Spanish");
     shared_ptr<PremiumUser<string>> premiumUser = make_shared<PremiumUser<string>>("PremiumUser", "English");
 
+
     int choice = -1;
     while (choice != 0) {
         cout << "\n--- Media Menu ---\n";
@@ -65,15 +67,15 @@ void Menu::run() {
         cout << "3. Add a TV Show\n";
         cout << "4. Add a Serial\n";
         cout << "5. Clone an Item\n";
-        cout << "6. Add Genre\n";  // New option to add genre
-        cout << "7. List Genres\n";  // New option to list all genres
-        cout << "8. Show Item Count\n";  // New option to show item count
-        cout << "9. Display Films of Actor\n";  // Option to display actor's films
-        cout << "10. Display Actor's Main Role and Role Type\n";  // Option to display actor's role details
-        cout << "11. Display Category Info\n";  // Option to display category information
-        cout << "12. Display User Profiles\n";  // Option to display user profiles
-        cout << "13. Report User (Admin only)\n";  // Option to report user (Admin only)
-        cout << "14. Recommend Content (Premium only)\n";  // Option to recommend content (Premium only)
+        cout << "6. Add Genre\n";
+        cout << "7. List Genres\n";
+        cout << "8. Show Item Count\n";
+        cout << "9. Display Films of Actor\n";
+        cout << "10. Display Actor's Main Role and Role Type\n";
+        cout << "11. Display Category Info\n";
+        cout << "12. Display User Profiles\n";
+        cout << "13. Report User (Admin only)\n";
+        cout << "14. Recommend Content (Premium only)\n";
         cout << "0. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
@@ -150,27 +152,26 @@ void Menu::run() {
                 cout << "Enter genre to add: ";
                 cin.ignore();
                 getline(cin, genre);
-                MediaItem::AddGenre(genre);  // Calling the AddGenre static function
+                MediaItem::AddGenre(genre);
                 break;
             }
             case 7: {
                 cout << "Genres list:\n";
-                for (const auto& genre : MediaItem::GetGenres()) {  // Calling the GetGenres static function
+                for (const auto& genre : MediaItem::GetGenres()) {
                     cout << genre << "\n";
                 }
                 break;
             }
             case 8: {
-                cout << "Total number of items: " << MediaItem::GetItemCount() << endl;  // Calling the GetItemCount static function
+                cout << "Total number of items: " << MediaItem::GetItemCount() << endl;
                 break;
             }
-            case 9: {  // Display the films of an actor
+            case 9: {
                 cout << "Enter actor name to display their films: ";
                 string actorName;
                 cin.ignore();
                 getline(cin, actorName);
 
-                // Check which actor matches
                 if (actor1->GetName() == actorName) {
                     actor1->DisplayFilms();
                 } else if (actor2->GetName() == actorName) {
@@ -180,13 +181,12 @@ void Menu::run() {
                 }
                 break;
             }
-            case 10: {  // Display the main role and role type of an actor
+            case 10: {
                 cout << "Enter actor name to display their main role and role type: ";
                 string actorName;
                 cin.ignore();
                 getline(cin, actorName);
 
-                // Check which actor matches
                 if (actor1->GetName() == actorName) {
                     cout << "Main Role: " << actor1->GetMainRole() << ", Role Type: " << actor1->GetRoleType() << endl;
                 } else if (actor2->GetName() == actorName) {
@@ -196,38 +196,21 @@ void Menu::run() {
                 }
                 break;
             }
-            case 11: {  // Display category information
+            case 11: {
                 cout << "\nCategories:\n";
                 cout << *dramaCategory << "\n";
                 cout << *comedyCategory << "\n";
                 cout << *sciFiCategory << "\n";
                 break;
             }
-                // Option to display user favorites and favorite details
-            case 12: {  // Display user profiles and their favorites
+            case 12: {
                 cout << "\nDisplaying user profiles:\n";
                 adminUser->DisplayProfile();
                 guestUser->DisplayProfile();
                 premiumUser->DisplayProfile();
-
-                // Displaying favorite count and top favorite for each user
-                cout << "\nDisplaying favorites:\n";
-                cout << adminUser->GetName() << " has " << adminUser->FavoriteCount() << " favorite items.\n";
-                cout << "Top Favorite: " << adminUser->GetTopFavorite() << endl;
-                adminUser->PrintFavoriteDetails(adminUser->GetTopFavorite());
-
-                cout << guestUser->GetName() << " has " << guestUser->FavoriteCount() << " favorite items.\n";
-                cout << "Top Favorite: " << guestUser->GetTopFavorite() << endl;
-                guestUser->PrintFavoriteDetails(guestUser->GetTopFavorite());
-
-                cout << premiumUser->GetName() << " has " << premiumUser->FavoriteCount() << " favorite items.\n";
-                cout << "Top Favorite: " << premiumUser->GetTopFavorite() << endl;
-                premiumUser->PrintFavoriteDetails(premiumUser->GetTopFavorite());
-
                 break;
             }
-
-            case 13: {  // Report user (admin only)
+            case 13: {
                 cout << "Enter the name of the user to report: ";
                 string userName;
                 cin.ignore();
@@ -236,18 +219,18 @@ void Menu::run() {
                 if (userName == adminUser->GetName()) {
                     cout << "Admin users cannot be reported.\n";
                 } else {
-                    AdminUser<string>::ReportUser(*adminUser);  // Admin reporting
+                    AdminUser<string>::ReportUser(*adminUser);
                 }
                 break;
             }
-            case 14: {  // Recommend content (premium only)
+            case 14: {
                 cout << "Enter the name of the premium user to recommend content for: ";
                 string userName;
                 cin.ignore();
                 getline(cin, userName);
 
                 if (userName == premiumUser->GetName()) {
-                    premiumUser->RecommendContent();  // Recommend content for premium user
+                    premiumUser->RecommendContent();
                 } else {
                     cout << "Only premium users can receive content recommendations.\n";
                 }
@@ -262,3 +245,4 @@ void Menu::run() {
         }
     }
 }
+
