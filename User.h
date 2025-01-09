@@ -12,7 +12,7 @@ class User {
 protected:
     std::string name;
     std::string preferredLanguage;
-    std::vector<T> favorites;  // Favorite items can now be of any type T
+    std::vector<T> favorites;
 
 public:
     // Constructor cu validare

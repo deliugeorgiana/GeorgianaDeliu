@@ -25,7 +25,7 @@ void Actor::DisplayFilms() const {
 
 //Role type
 [[nodiscard]] std::string Actor::GetRoleType() const {
-    return "Actor";  // This is a generic "Actor" role, can be overridden by derived classes
+    return "Actor";
 }
 
 const std::string& Actor::GetName() const {

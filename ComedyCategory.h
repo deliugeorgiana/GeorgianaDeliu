@@ -3,7 +3,7 @@
 
 #include "Category.h"
 
-// Clasa derivată din clasa șablon Category
+// derived class
 template <typename T>
 class ComedyCategory : public Category<T> {
 public:

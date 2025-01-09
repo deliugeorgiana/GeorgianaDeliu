@@ -85,6 +85,10 @@ add_executable(${PROJECT_NAME}
         SupportingActor.h
         Menu.cpp
         Menu.h
+        MediaFactory.cpp
+        MediaFactory.h
+        Command.cpp
+        Command.h
 )
 
 include(cmake/CompilerFlags.cmake)

@@ -5,12 +5,12 @@
 #include <string>
 #include <memory>
 
-// Clasă template
+// clasa template
 template <typename T>
 class Category {
 protected:
     std::string name;
-    T additionalAttribute; // Atribut de tip generic
+    T additionalAttribute; // atribut generic
 
 public:
     // Constructor cu parametru generic

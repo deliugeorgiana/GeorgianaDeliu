@@ -3,7 +3,7 @@
 
 TVShow::TVShow([[maybe_unused]] std::string title, [[maybe_unused]] std::string description, float rating)
         : MediaItem(std::move(title), std::move(description), rating) {
-    // Temporary copies
+    // copii temporare
     const std::string titleCopy = this->GetTitle();
     const std::string descriptionCopy = this->GetDescription();
 

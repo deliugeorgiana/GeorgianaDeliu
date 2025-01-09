@@ -32,7 +32,7 @@ private:
     static std::shared_ptr<AdminUser<T>> instance;
 };
 
-// Define the static member
+// define the static member
 template <typename T>
 std::shared_ptr<AdminUser<T>> AdminUser<T>::instance = nullptr;
 

@@ -3,10 +3,10 @@
 
 #include <vector>
 #include <memory>
-#include "MediaItem.h"  // for MediaItem and derived classes
-#include "Actor.h"      // Include Actor class for handling actors
-#include "LeadActor.h"  // Include LeadActor class
-#include "SupportingActor.h" // Include SupportingActor class
+#include "MediaItem.h"
+#include "Actor.h"
+#include "LeadActor.h"
+#include "SupportingActor.h"
 
 class Menu {
 private:
@@ -22,7 +22,6 @@ public:
     // Return the unique instance of the class
     static Menu& instance();
 
-    // Method to run the menu
     static void run();
 };
 
