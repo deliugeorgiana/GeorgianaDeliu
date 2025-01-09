@@ -15,11 +15,6 @@ float Serial::GetRating() const {
     return rating;
 }
 
-//Virtual function for typew
-std::string Serial::GetType() const {
-    return "Serial";
-}
-
 // Clone
 std::shared_ptr<MediaItem> Serial::Clone() const {
     return std::make_shared<Serial>(*this);

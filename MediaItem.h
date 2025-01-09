@@ -32,28 +32,24 @@ public:
     // Virtual function fot rating
     [[nodiscard]] virtual float GetRating() const = 0;
 
-    // Virtual function for type
-    [[maybe_unused]] [[nodiscard]] virtual std::string GetType() const = 0;
-
-    // Virtual function for info
-    [[maybe_unused]] [[nodiscard]] virtual std::string GetInfo() const;
-
     // getter title
     [[nodiscard]] const std::string& GetTitle() const;
 
     // getter description
-    [[nodiscard]] const std::string& GetDescription() const;
+   [[nodiscard]] const std::string& GetDescription() const;
 
     // suprascrierea operatorului, incarcarea unui obiect
     friend std::ostream &operator<<(std::ostream &os, const MediaItem &media);
 
     [[nodiscard]] virtual std::shared_ptr<MediaItem> Clone() const = 0;
 
-    [[maybe_unused]] static int GetItemCount();
+    static int GetItemCount();
 
-    [[maybe_unused]] static void AddGenre(const std::string& genre);
+    static void AddGenre(const std::string& genre);
 
-    [[maybe_unused]] static const std::vector<std::string>& GetGenres();
+    static const std::vector<std::string>& GetGenres();
+
+    [[maybe_unused]] [[nodiscard]] std::string GetInfo() const;
 };
 
 #endif

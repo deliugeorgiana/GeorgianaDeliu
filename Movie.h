@@ -19,8 +19,6 @@ public:
     // scoate ratingul
     [[nodiscard]] float GetRating() const override;
 
-    // scoate tipul
-    [[nodiscard]] std::string GetType() const override;
 
     //clona
     [[nodiscard]] std::shared_ptr<MediaItem> Clone() const override {

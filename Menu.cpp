@@ -24,6 +24,11 @@ void Menu::run() {
     items.push_back(make_shared<Movie>("Inception", "A mind-bending thriller", 9.0f));
     items.push_back(make_shared<TVShow>("Breaking Bad", "A chemistry teacher turns to crime", 9.5f));
 
+    // Add genres using the static function
+    MediaItem::AddGenre("Action");
+    MediaItem::AddGenre("Drama");
+    MediaItem::AddGenre("Sci-Fi");
+
     int choice = -1;
     while (choice != 0) {
         cout << "\n--- Media Menu ---\n";
@@ -32,6 +37,9 @@ void Menu::run() {
         cout << "3. Add a TV Show\n";
         cout << "4. Add a Serial\n";
         cout << "5. Clone an Item\n";
+        cout << "6. Add Genre\n";  // New option to add genre
+        cout << "7. List Genres\n";  // New option to list all genres
+        cout << "8. Show Item Count\n";  // New option to show item count
         cout << "0. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
@@ -101,6 +109,25 @@ void Menu::run() {
                 } else {
                     cout << "No items to clone.\n";
                 }
+                break;
+            }
+            case 6: {
+                string genre;
+                cout << "Enter genre to add: ";
+                cin.ignore();
+                getline(cin, genre);
+                MediaItem::AddGenre(genre);  // Calling the AddGenre static function
+                break;
+            }
+            case 7: {
+                cout << "Genres list:\n";
+                for (const auto& genre : MediaItem::GetGenres()) {  // Calling the GetGenres static function
+                    cout << genre << "\n";
+                }
+                break;
+            }
+            case 8: {
+                cout << "Total number of items: " << MediaItem::GetItemCount() << endl;  // Calling the GetItemCount static function
                 break;
             }
             case 0:

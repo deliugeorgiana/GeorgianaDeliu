@@ -24,7 +24,7 @@ const std::string& MediaItem::GetDescription() const {
 }
 
 // info MediaItem
-[[maybe_unused]] std::string MediaItem::GetInfo() const {
+[[maybe_unused]] [[maybe_unused]] std::string MediaItem::GetInfo() const {
     return title + ": " + description;
 }
 

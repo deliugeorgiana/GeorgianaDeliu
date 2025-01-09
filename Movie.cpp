@@ -14,8 +14,3 @@ Movie::Movie([[maybe_unused]] std::string title, [[maybe_unused]] std::string de
 float Movie::GetRating() const {
     return rating;
 }
-
-// Virtual function for type
-std::string Movie::GetType() const {
-    return "Movie";
-}
