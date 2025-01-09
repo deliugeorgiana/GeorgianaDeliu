@@ -4,6 +4,9 @@
 #include <vector>
 #include <memory>
 #include "MediaItem.h"  // for MediaItem and derived classes
+#include "Actor.h"      // Include Actor class for handling actors
+#include "LeadActor.h"  // Include LeadActor class
+#include "SupportingActor.h" // Include SupportingActor class
 
 class Menu {
 private:

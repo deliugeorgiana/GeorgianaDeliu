@@ -2,6 +2,9 @@
 #include "Movie.h"
 #include "TVShow.h"
 #include "Serial.h"
+#include "Actor.h"
+#include "LeadActor.h"
+#include "SupportingActor.h"
 #include <iostream>
 #include <memory>
 #include <vector>
@@ -29,6 +32,14 @@ void Menu::run() {
     MediaItem::AddGenre("Drama");
     MediaItem::AddGenre("Sci-Fi");
 
+    // Create actors
+    shared_ptr<Actor> actor1 = make_shared<LeadActor>("Leonardo DiCaprio");
+    shared_ptr<Actor> actor2 = make_shared<SupportingActor>("Aaron Paul");
+
+    // Add films to actors
+    actor1->AddFilm(items[0]);  // Adding "Inception" movie to Leonardo DiCaprio's filmography
+    actor2->AddFilm(items[1]);  // Adding "Breaking Bad" TV Show to Aaron Paul's filmography
+
     int choice = -1;
     while (choice != 0) {
         cout << "\n--- Media Menu ---\n";
@@ -40,6 +51,8 @@ void Menu::run() {
         cout << "6. Add Genre\n";  // New option to add genre
         cout << "7. List Genres\n";  // New option to list all genres
         cout << "8. Show Item Count\n";  // New option to show item count
+        cout << "9. Display Films of Actor\n";  // Option to display actor's films
+        cout << "10. Display Actor's Main Role and Role Type\n";  // Option to display actor's role details
         cout << "0. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
@@ -128,6 +141,38 @@ void Menu::run() {
             }
             case 8: {
                 cout << "Total number of items: " << MediaItem::GetItemCount() << endl;  // Calling the GetItemCount static function
+                break;
+            }
+            case 9: {  // Display the films of an actor
+                cout << "Enter actor name to display their films: ";
+                string actorName;
+                cin.ignore();
+                getline(cin, actorName);
+
+                // Check which actor matches
+                if (actor1->GetName() == actorName) {
+                    actor1->DisplayFilms();
+                } else if (actor2->GetName() == actorName) {
+                    actor2->DisplayFilms();
+                } else {
+                    cout << "Actor not found.\n";
+                }
+                break;
+            }
+            case 10: {  // Display the main role and role type of an actor
+                cout << "Enter actor name to display their main role and role type: ";
+                string actorName;
+                cin.ignore();
+                getline(cin, actorName);
+
+                // Check which actor matches
+                if (actor1->GetName() == actorName) {
+                    cout << "Main Role: " << actor1->GetMainRole() << ", Role Type: " << actor1->GetRoleType() << endl;
+                } else if (actor2->GetName() == actorName) {
+                    cout << "Main Role: " << actor2->GetMainRole() << ", Role Type: " << actor2->GetRoleType() << endl;
+                } else {
+                    cout << "Actor not found.\n";
+                }
                 break;
             }
             case 0:
