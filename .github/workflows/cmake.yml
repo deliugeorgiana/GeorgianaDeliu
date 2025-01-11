@@ -26,10 +26,20 @@ jobs:
           tools-clang-18-stdlib
           tools-clang-18
           
+    - name: Add LLVM Repository
+      run: |
+        wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+        sudo add-apt-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-18 main"
+        sudo apt-get update
+        
     - name: Install Dependencies
       run: |
-        sudo apt-get update
-        sudo apt-get install -y cmake clang-18 libc++-18-dev libc++abi-18-dev
+        sudo apt-get install -y \
+          cmake \
+          clang-18 \
+          libc++-18-dev \
+          libc++abi-18-dev \
+          lld-18
         
     - name: Configure CMake
       run: |
